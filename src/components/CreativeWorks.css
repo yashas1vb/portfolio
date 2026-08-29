@@ -1,0 +1,351 @@
+.creative-section {
+  padding: 80px 0 130px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.creative-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  padding: 0 10px;
+}
+
+.creative-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.creative-section-subhead {
+  font-family: var(--font-primary);
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ================= FLIPKART POSTERS ================= */
+.flipkart-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.flipkart-posters-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 480px));
+  justify-content: center;
+  gap: clamp(24px, 3.5vw, 44px);
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.flipkart-poster-card {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 9 / 12;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+  background: #0f172a;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  margin: 0 auto;
+}
+
+.flipkart-poster-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+}
+
+.flipkart-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================= VOYANTE BY VOYAGE ================= */
+.voyante-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.voyante-header {
+  text-align: center;
+}
+
+.voyante-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-blue);
+}
+
+.voyante-subtitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  color: var(--text-blue);
+  margin-top: 6px;
+}
+
+/* Voyante Side-by-Side Grid */
+.voyante-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 480px));
+  justify-content: center;
+  gap: clamp(28px, 4vw, 50px);
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.voyante-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.voyante-label {
+  font-family: var(--font-primary);
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.voyante-card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+  background: #0f172a;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  margin: 0 auto;
+}
+
+.voyante-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.26);
+}
+
+.voyante-card-billboard {
+  aspect-ratio: 1 / 1;
+}
+
+.voyante-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Storyboard */
+.voyante-storyboard-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.storyboard-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.storyboard-sub {
+  font-family: var(--font-primary);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 5-Scene Storyboard Layout (1 top center, 2 middle, 2 bottom) */
+.storyboard-scenes-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.storyboard-scene-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 290px;
+}
+
+.storyboard-scenes-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 290px));
+  justify-content: center;
+  gap: clamp(16px, 3.5vw, 36px);
+  width: 100%;
+}
+
+.storyboard-scene-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.storyboard-scene-title {
+  font-family: var(--font-primary);
+  font-size: clamp(0.9rem, 1.25vw, 1.05rem);
+  font-weight: 800;
+  color: #1e293b;
+  text-align: center;
+  line-height: 1.3;
+  min-height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.storyboard-scene-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  background: #0f172a;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.storyboard-scene-frame:hover {
+  transform: scale(1.03);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+}
+
+.storyboard-scene-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================= AI VIDEO ================= */
+.ai-video-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.ai-video-title {
+  font-family: var(--font-primary);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  text-align: center;
+}
+
+.ai-video-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  background: #000000;
+  margin: 0 auto;
+}
+
+.ai-video-player {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  display: block;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #000000;
+}
+
+/* Placeholder */
+.creative-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background: #1e293b;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 8px;
+}
+
+.creative-placeholder span {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.creative-placeholder small {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .flipkart-posters-stack {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .voyante-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 580px) {
+  .storyboard-scenes-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 280px;
+  }
+}

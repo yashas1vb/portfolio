@@ -1,0 +1,270 @@
+.stories-section {
+  padding: 70px 0 100px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* ================= LEFT CONTENT COLUMN ================= */
+.stories-content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.stories-stacked-title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.stories-title-line {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.2vw, 4.6rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.stories-role-tag {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text-blue);
+  margin-bottom: 30px;
+  letter-spacing: -0.01em;
+}
+
+.stories-points-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stories-point-item {
+  font-family: var(--font-primary);
+  font-size: clamp(1.08rem, 1.55vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text-blue);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.stories-point-item:hover {
+  color: var(--text-blue-light);
+  transform: translateX(5px);
+}
+
+/* ================= RIGHT PAPER-ON-PAPER STACK COLUMN ================= */
+.stories-image-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stories-paper-stack {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  height: 520px;
+  margin: 0 auto;
+}
+
+/* Base Paper Layer */
+.stories-paper-layer {
+  position: absolute;
+  cursor: pointer;
+  transform-origin: center center;
+  opacity: 0;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: 
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease;
+  will-change: transform, opacity, filter;
+  user-select: none;
+}
+
+.stories-paper-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+/* Paper 1: Top / Back Layer (Amulyavani / Sleep Apnea Article) */
+.paper-layer-1 {
+  top: 0;
+  left: 14%;
+  width: 78%;
+  max-width: 460px;
+  z-index: 1;
+  transform: rotate(2deg) translateY(-20px);
+}
+
+/* Paper 2: Middle-Left Layer (IndiaTV Article) */
+.paper-layer-2 {
+  top: 22%;
+  left: 0;
+  width: 80%;
+  max-width: 480px;
+  z-index: 2;
+  transform: rotate(-4deg) translateY(-20px);
+}
+
+/* Paper 3: Front-Center Layer (Hindustan Times Article) */
+.paper-layer-3 {
+  top: 36%;
+  left: 14%;
+  width: 84%;
+  max-width: 510px;
+  z-index: 3;
+  transform: rotate(1deg) translateY(-20px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18), 0 4px 10px rgba(0, 0, 0, 0.09);
+}
+
+/* ================= SEQUENTIAL REVEAL ANIMATIONS ================= */
+.stories-image-wrapper.is-visible .paper-layer-1 {
+  opacity: 1;
+  transform: rotate(2deg) translateY(0);
+  transition-delay: 0.15s;
+}
+
+.stories-image-wrapper.is-visible .paper-layer-2 {
+  opacity: 1;
+  transform: rotate(-4deg) translateY(0);
+  transition-delay: 0.45s;
+}
+
+.stories-image-wrapper.is-visible .paper-layer-3 {
+  opacity: 1;
+  transform: rotate(1deg) translateY(0);
+  transition-delay: 0.75s;
+}
+
+/* ================= INTERACTIVE HOVER EFFECTS ================= */
+/* Subtle fan-out on container hover */
+.stories-image-wrapper.is-visible .stories-paper-stack:hover .paper-layer-1 {
+  transform: rotate(4deg) translateY(-8px) scale(1.01);
+  transition-delay: 0s;
+}
+
+.stories-image-wrapper.is-visible .stories-paper-stack:hover .paper-layer-2 {
+  transform: rotate(-6deg) translateY(-2px) translateX(-8px) scale(1.02);
+  transition-delay: 0s;
+}
+
+.stories-image-wrapper.is-visible .stories-paper-stack:hover .paper-layer-3 {
+  transform: rotate(0deg) translateY(8px) scale(1.03);
+  transition-delay: 0s;
+}
+
+/* Elevated Focus on individual paper hover */
+.stories-image-wrapper.is-visible .stories-paper-layer:hover {
+  z-index: 10 !important;
+  transform: translateY(-10px) rotate(0deg) scale(1.06) !important;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.12) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease !important;
+}
+
+/* Placeholder */
+.stories-paper-placeholder {
+  width: 100%;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #f8fafc;
+  border: 2px dashed #93c5fd;
+  border-radius: 6px;
+  color: var(--text-blue);
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 8px;
+}
+
+.stories-paper-placeholder span {
+  font-weight: 700;
+}
+
+.stories-paper-placeholder small {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 960px) {
+  .stories-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .stories-content-left {
+    align-items: flex-start;
+  }
+
+  .stories-paper-stack {
+    max-width: 500px;
+    height: 460px;
+  }
+}
+
+@media (max-width: 600px) {
+  .stories-section {
+    padding: 50px 0 70px;
+  }
+
+  .stories-paper-stack {
+    max-width: 340px;
+    height: 320px;
+  }
+
+  .paper-layer-1 {
+    width: 74%;
+  }
+
+  .paper-layer-2 {
+    top: 22%;
+    width: 78%;
+  }
+
+  .paper-layer-3 {
+    top: 36%;
+    width: 82%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stories-paper-layer {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

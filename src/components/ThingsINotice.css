@@ -1,0 +1,234 @@
+.notice-section {
+  padding: 60px 0 90px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.notice-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: -0.02em;
+}
+
+/* ================= 3-COLUMN WRAPPER (LEFT LABELS | MOODBOARD | RIGHT LABELS) ================= */
+.notice-board-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Left Annotations Column */
+.notice-labels-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 520px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+/* Right Annotations Column */
+.notice-labels-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 520px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.notice-handwritten-label {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+  font-weight: 700;
+  color: var(--text-blue);
+  line-height: 1.2;
+  transition: transform 0.2s ease, color 0.2s ease;
+  user-select: none;
+}
+
+.notice-handwritten-label:hover {
+  color: var(--text-blue-light);
+  transform: scale(1.05);
+}
+
+/* ================= CENTRAL MOODBOARD 2x2 CLUSTER ================= */
+.notice-collage-grid {
+  position: relative;
+  width: 660px;
+  height: 620px;
+}
+
+/* Item 1: Top-Left Billboard */
+.notice-card-top-left {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 270px;
+  height: 315px;
+  z-index: 1;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f1f5f9;
+  transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notice-card-top-left:hover {
+  transform: scale(1.03);
+  z-index: 10;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Item 2: Top-Right Trends / Candy */
+.notice-card-top-right {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  width: 275px;
+  height: 320px;
+  z-index: 2;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f1f5f9;
+  transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notice-card-top-right:hover {
+  transform: scale(1.03);
+  z-index: 10;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Item 3: Bottom-Left Creators Red Poster */
+.notice-card-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 60px;
+  width: 250px;
+  height: 340px;
+  z-index: 4;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f1f5f9;
+  transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notice-card-bottom-left:hover {
+  transform: scale(1.03);
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Item 4: Bottom-Right Statue Meme (Moved to the right with clear separation) */
+.notice-card-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 280px;
+  height: 325px;
+  z-index: 3;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f1f5f9;
+  transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notice-card-bottom-right:hover {
+  transform: scale(1.03);
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.notice-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder */
+.notice-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  background: #eef2ff;
+  border: 2px dashed #a5b4fc;
+  color: var(--text-blue);
+  font-size: 0.85rem;
+  font-weight: 600;
+  gap: 6px;
+}
+
+.notice-placeholder span {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.notice-placeholder small {
+  color: #6366f1;
+  font-size: 0.75rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 960px) {
+  .notice-board-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .notice-labels-left,
+  .notice-labels-right {
+    display: none;
+  }
+
+  .notice-collage-grid {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .notice-collage-grid {
+    width: 320px;
+    height: 420px;
+  }
+
+  .notice-card-top-left {
+    width: 155px;
+    height: 190px;
+  }
+
+  .notice-card-top-right {
+    width: 160px;
+    height: 195px;
+  }
+
+  .notice-card-bottom-left {
+    left: 20px;
+    width: 150px;
+    height: 210px;
+  }
+
+  .notice-card-bottom-right {
+    width: 155px;
+    height: 200px;
+  }
+}

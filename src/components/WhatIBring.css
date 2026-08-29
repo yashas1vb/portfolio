@@ -1,0 +1,136 @@
+.bring-section {
+  padding: 60px 0 100px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.bring-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 0.02em;
+}
+
+/* ================= 4-COLUMN ALTERNATING GRID ================= */
+.bring-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2.5vw, 36px);
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.bring-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Handwritten label */
+.bring-label {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: clamp(1.35rem, 1.8vw, 1.9rem);
+  font-weight: 700;
+  color: var(--text-blue);
+  text-align: center;
+  line-height: 1.18;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.bring-label:hover {
+  color: var(--text-blue-light);
+  transform: scale(1.05);
+}
+
+/* Image Card - Complete uncropped view */
+.bring-card {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  overflow: visible;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.bring-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.bring-img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.14));
+  transition: transform 0.3s ease;
+}
+
+/* Placeholder */
+.bring-placeholder {
+  width: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  text-align: center;
+  background: #eef2ff;
+  border: 2px dashed #a5b4fc;
+  color: var(--text-blue);
+  font-size: 0.85rem;
+  font-weight: 600;
+  gap: 8px;
+  border-radius: 4px;
+}
+
+.bring-placeholder span {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.bring-placeholder small {
+  color: #6366f1;
+  font-size: 0.75rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 960px) {
+  .bring-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 20px;
+  }
+  .bring-label {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .bring-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 36px;
+  }
+}

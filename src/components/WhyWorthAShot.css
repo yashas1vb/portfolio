@@ -1,0 +1,218 @@
+.worth-section {
+  padding: 80px 0 140px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.worth-container {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 0 20px;
+}
+
+/* ================= HEADER WITH TITLE + RETRO TV ================= */
+.worth-header-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.worth-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(20px, 4vw, 48px);
+  width: 100%;
+  position: relative;
+}
+
+.worth-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.worth-tv-icon-card {
+  width: clamp(220px, 26vw, 340px);
+  height: auto;
+  aspect-ratio: 1 / 1.08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: -20px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.worth-tv-icon-card:hover {
+  transform: rotate(4deg) scale(1.06);
+}
+
+.worth-tv-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.22));
+}
+
+.worth-subtitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
+  color: var(--text-blue);
+  margin-top: 2px;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+/* ================= EXACT 2-COLUMN STAGGERED MASONRY ================= */
+.worth-masonry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(24px, 3.5vw, 40px);
+  width: 100%;
+  max-width: 860px;
+  margin: 15px auto 0;
+}
+
+.worth-column {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* Right column offset downwards to create the exact zigzag rhythm */
+.worth-column-offset {
+  padding-top: clamp(140px, 20vw, 220px);
+}
+
+.worth-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 12.5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+  background: #0f172a;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.worth-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.25);
+}
+
+.worth-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lower Caption Overlay with Dark Scrim */
+.worth-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+  padding: 28px 16px 16px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.worth-caption-text {
+  font-family: var(--font-primary);
+  font-size: clamp(0.86rem, 1.15vw, 1.02rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  letter-spacing: -0.01em;
+}
+
+/* Placeholder */
+.worth-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  background: #1e293b;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 600;
+  gap: 6px;
+}
+
+.worth-placeholder span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.worth-placeholder small {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 640px) {
+  .worth-container {
+    max-width: 100%;
+    padding: 0 16px;
+    gap: 24px;
+  }
+
+  .worth-title-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .worth-main-title {
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+  }
+
+  .worth-tv-icon-card {
+    width: 95px;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .worth-masonry-grid {
+    column-gap: 14px;
+  }
+
+  .worth-column {
+    gap: 20px;
+  }
+
+  .worth-column-offset {
+    padding-top: 60px;
+  }
+
+  .worth-caption-overlay {
+    padding: 18px 8px 10px;
+  }
+
+  .worth-caption-text {
+    font-size: 0.76rem;
+    line-height: 1.25;
+  }
+}

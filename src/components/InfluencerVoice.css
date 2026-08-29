@@ -1,0 +1,224 @@
+.voice-section {
+  padding: 80px 0 130px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.voice-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0 10px;
+}
+
+/* ================= TOP SECTION TITLE ================= */
+.voice-header-area {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.voice-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  letter-spacing: -0.01em;
+}
+
+.voice-subtitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  letter-spacing: 0.05em;
+}
+
+/* ================= BLOCK 1: BAG HERO LEFT | STACKED TITLE RIGHT ================= */
+.voice-hero-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.voice-hero-card {
+  width: 100%;
+  aspect-ratio: 4 / 3.4;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  background: #f8fafc;
+  transition: transform 0.3s ease;
+}
+
+.voice-hero-card:hover {
+  transform: scale(1.02);
+}
+
+.voice-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.voice-stacked-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.voice-title-line {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+  font-weight: 800;
+  color: var(--text-blue);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+
+.voice-statement {
+  font-family: var(--font-primary);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  color: var(--text-blue);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ================= BLOCK 2: MIDDLE MODEL POSE ================= */
+.voice-middle-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin: 20px 0;
+}
+
+.voice-model-card {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.voice-model-card:hover {
+  transform: scale(1.02);
+}
+
+.voice-model-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.18));
+}
+
+/* ================= BLOCK 3: 2x2 CREATOR STRATEGY CARDS ================= */
+.voice-creators-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 320px));
+  justify-content: center;
+  gap: clamp(20px, 3vw, 36px);
+  width: 100%;
+  max-width: 720px;
+  margin: 25px auto 0;
+}
+
+.creator-card {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+  background: #0f172a;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  margin: 0 auto;
+}
+
+.creator-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.24);
+}
+
+.creator-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lower Caption Overlay with Scrim */
+.creator-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.6) 65%, transparent 100%);
+  padding: 26px 16px 16px;
+  text-align: center;
+}
+
+.creator-caption-text {
+  font-family: var(--font-primary);
+  font-size: clamp(0.88rem, 1.15vw, 1.02rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.45;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Placeholder */
+.voice-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  background: #eef2ff;
+  border: 2px dashed #a5b4fc;
+  color: var(--text-blue);
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 8px;
+}
+
+.voice-placeholder span {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.voice-placeholder small {
+  color: #6366f1;
+  font-size: 0.8rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 860px) {
+  .voice-hero-row {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .voice-creators-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
