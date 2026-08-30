@@ -14,7 +14,7 @@ export default function WhatIBring({ data }) {
   const delays = ['delay-1', 'delay-2', 'delay-3', 'delay-4'];
 
   return (
-    <section id="why-me" className="bring-section">
+    <section id="what-i-bring" className="bring-section">
       <div className="container">
         <h2 className="bring-title reveal">{title}</h2>
 

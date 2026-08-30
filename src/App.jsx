@@ -119,14 +119,24 @@ export default function App() {
         />
       </div>
 
-      {/* Zoom Image Modal */}
+      {/* Zoom Image/Video Modal */}
       {activeZoomImage && (
         <div className="worth-modal-overlay" onClick={() => setActiveZoomImage(null)}>
           <div className="worth-modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="worth-modal-close" onClick={() => setActiveZoomImage(null)} aria-label="Close modal">
               <X size={28} />
             </button>
-            <img src={activeZoomImage.image} alt={activeZoomImage.caption} className="worth-modal-img" />
+            {activeZoomImage.videoUrl ? (
+              <video
+                src={activeZoomImage.videoUrl}
+                controls
+                autoPlay
+                loop
+                className="worth-modal-video"
+              />
+            ) : (
+              <img src={activeZoomImage.image} alt={activeZoomImage.caption} className="worth-modal-img" />
+            )}
             {activeZoomImage.caption && <p className="worth-modal-caption">{activeZoomImage.caption}</p>}
           </div>
         </div>
