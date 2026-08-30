@@ -22,6 +22,7 @@ export default function StoriesSeen({ data }) {
 
   return (
     <section id="case-study" className="stories-section">
+      <div className="parallax-watermark" aria-hidden="true">STORIES SEEN</div>
       <div className="container">
         <div className="stories-grid">
           {/* Left Column: Stacked Title + Role + Bullet Points */}

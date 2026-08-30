@@ -9,7 +9,7 @@ export default function WhatIBring({ data }) {
     setImgErrors((prev) => ({ ...prev, [id]: true }));
   };
 
-  const { title = "WHAT I BRING?", pillars = [] } = data || {};
+  const { title = "What I Bring?", pillars = [] } = data || {};
 
   const delays = ['delay-1', 'delay-2', 'delay-3', 'delay-4'];
 

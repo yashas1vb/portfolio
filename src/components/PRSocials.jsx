@@ -5,21 +5,24 @@ import './PRSocials.css';
 export default function PRSocials({ data }) {
   const [campaignImgError, setCampaignImgError] = useState(false);
   const [apologyImgError, setApologyImgError] = useState(false);
+  const [apologyImg2Error, setApologyImg2Error] = useState(false);
 
   const {
-    mainTitle = "THE STRATEGY I'D BRING",
+    mainTitle = "The Strategy I'd Bring",
     caseTitleLines = ["GIVA", "FROM", "BACKLASH", "TO", "BELIEF"],
     campaignImage = "/assets/pr-strategy/giva-campaign.png",
     apologyImage = "/assets/pr-strategy/kriti-message.jpeg",
+    apologyImage2 = "/assets/pr-strategy/message-2.jpeg",
     context = "What happened: Rakhi ad, backlash, ad pulled, apology posted.",
-    approachHeading = "How my approach would look like",
+    approachHeading = "How My Approach Would Look Like",
     phases = [],
-    inHerWordsHeading = "In Her Words – What the campaign would actually sound like from Kriti!",
+    inHerWordsHeading = "GIVA Responds through Kriti!",
     wordsCards = [],
   } = data || {};
 
   return (
     <section id="pr-socials" className="pr-socials-section">
+      <div className="parallax-watermark" aria-hidden="true">PR STRATEGY</div>
       <div className="container">
         <div className="pr-socials-container">
           {/* Main Title */}
@@ -54,25 +57,46 @@ export default function PRSocials({ data }) {
               </div>
             </div>
 
-            {/* Bottom Row: Apology Image Left | What Happened Context Right */}
-            <div className="pr-grid-row pr-row-bottom">
-              <div className="pr-apology-card reveal-left delay-2">
-                {!apologyImgError && apologyImage ? (
-                  <img
-                    src={apologyImage}
-                    alt="GIVA Apology Statement"
-                    className="pr-apology-img"
-                    onError={() => setApologyImgError(true)}
-                  />
-                ) : (
-                  <div className="pr-placeholder">
-                    <FileText size={36} />
-                    <span>GIVA Apology Statement</span>
-                  </div>
-                )}
+            {/* Bottom Section: Two Apology Images Side by Side, with Context below */}
+            <div className="pr-row-bottom-custom reveal delay-2">
+              <div className="pr-apology-cards-wrap">
+                {/* First Apology Statement */}
+                <div className="pr-apology-card pr-apology-card-left">
+                  {!apologyImgError && apologyImage ? (
+                    <img
+                      src={apologyImage}
+                      alt="GIVA Apology Statement"
+                      className="pr-apology-img"
+                      onError={() => setApologyImgError(true)}
+                    />
+                  ) : (
+                    <div className="pr-placeholder">
+                      <FileText size={36} />
+                      <span>GIVA Apology Statement</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Second Apology Statement */}
+                <div className="pr-apology-card pr-apology-card-right">
+                  {!apologyImg2Error && apologyImage2 ? (
+                    <img
+                      src={apologyImage2}
+                      alt="GIVA Response Statement"
+                      className="pr-apology-img"
+                      onError={() => setApologyImg2Error(true)}
+                    />
+                  ) : (
+                    <div className="pr-placeholder">
+                      <FileText size={36} />
+                      <span>GIVA Response Statement</span>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              <div className="pr-context-wrap reveal-right delay-2">
+              {/* Centered Context underneath both images */}
+              <div className="pr-context-wrap-centered">
                 <p className="pr-context-highlight">{context}</p>
               </div>
             </div>

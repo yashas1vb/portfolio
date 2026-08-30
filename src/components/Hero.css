@@ -1,5 +1,5 @@
 .hero-section {
-  padding: 24px 0 80px;
+  padding: 20px 0 45px;
   background: #ffffff;
   position: relative;
   overflow: hidden;
@@ -10,7 +10,7 @@
 .hero-stage {
   position: relative;
   width: 100%;
-  max-width: 1260px;
+  max-width: 1540px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -38,7 +38,7 @@
 
 .hero-greeting {
   font-family: var(--font-primary);
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
   font-weight: 600;
   color: var(--text-blue);
   margin-bottom: 4px;
@@ -47,7 +47,7 @@
 
 .hero-first-name {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 6.2vw, 6.2rem);
+  font-size: clamp(2.8rem, 6.2vw, 6.2rem);
   font-weight: 800;
   color: var(--text-blue);
   letter-spacing: -0.02em;
@@ -58,12 +58,12 @@
 
 /* Center Spacer (Gap for the standing cutout head) - tighter to bring right text closer */
 .hero-center-spacer {
-  width: clamp(130px, 15vw, 190px);
+  width: clamp(160px, 18vw, 280px);
   flex-shrink: 0;
   height: 10px;
 }
 
-/* Right: Naregal + Tagline - positioned with 18px rightward offset */
+/* Right: Naregal + Tagline - shifted right by 28px */
 .hero-right-header {
   display: flex;
   flex-direction: column;
@@ -71,12 +71,12 @@
   text-align: left;
   flex-shrink: 0;
   padding-top: 0;
-  margin-left: 18px;
+  margin-left: 30px;
 }
 
 .hero-greeting-spacer {
   font-family: var(--font-primary);
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
   font-weight: 600;
   margin-bottom: 4px;
   letter-spacing: -0.01em;
@@ -87,7 +87,7 @@
 
 .hero-last-name {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 6.2vw, 6.2rem);
+  font-size: clamp(2.8rem, 6.2vw, 6.2rem);
   font-weight: 800;
   color: var(--text-blue);
   letter-spacing: -0.02em;
@@ -98,7 +98,7 @@
 
 .hero-subtag {
   font-family: var(--font-primary);
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
   font-style: italic;
   font-weight: 600;
   color: var(--text-blue);
@@ -112,7 +112,7 @@
 .hero-collage-stage {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 640px;
   margin-top: -15px;
   display: flex;
   justify-content: center;
@@ -160,68 +160,141 @@
   }
 }
 
-/* ================= ENLARGED SIDE PHOTOS WITH POP/BLOOM ================= */
+/* ================= ENLARGED SIDE PHOTOS & CUTOUT WITH POP/BLOOM ================= */
 
-/* Left Photo: Enlarged to 350x470, tilted -10.5deg */
+/* Left Photo Container: Positioned left */
 .photo-card-left {
   position: absolute;
-  left: calc(50% - 390px);
+  left: calc(50% - 460px);
   top: 100px;
-  width: 350px;
-  height: 470px;
+  width: 375px;
+  height: 505px;
+  transform: translateY(var(--parallax-y, 0px));
+  z-index: 2;
+  pointer-events: auto;
+  outline: none;
+  animation: bloomPopLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
+  will-change: transform, opacity, filter;
+  transition: z-index 0.3s ease;
+}
+
+.photo-card-left .photo-card-inner {
+  width: 100%;
+  height: 100%;
   transform: rotate(-10.5deg);
   border-radius: 20px;
   box-shadow: 0 22px 50px rgba(0, 0, 0, 0.16), 0 8px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  z-index: 2;
   background: #f8fafc;
-  animation: bloomPopLeft 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  will-change: transform, box-shadow, filter;
 }
 
-.photo-card-left:hover {
-  transform: scale(1.03) rotate(-8deg);
-  z-index: 15;
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22), 0 10px 25px rgba(0, 0, 0, 0.1);
+.photo-card-left:hover,
+.photo-card-left:focus-visible {
+  z-index: 20;
 }
 
-/* Center Cutout: Positioned High in the Center Gap, Rising above both cards */
+.photo-card-left:hover .photo-card-inner,
+.photo-card-left:focus-visible .photo-card-inner {
+  transform: translateY(-12px) scale(1.06) rotate(-6.5deg);
+  box-shadow: 0 34px 70px rgba(29, 78, 168, 0.26), 0 14px 30px rgba(0, 0, 0, 0.14);
+  filter: brightness(1.03);
+}
+
+.photo-card-left:hover .card-img,
+.photo-card-left:focus-visible .card-img {
+  transform: scale(1.04);
+}
+
+/* Center Cutout Container: Positioned High in the Center Gap, Rising above both cards */
 .cutout-center-wrapper {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: -140px;
-  width: 360px;
-  height: 720px;
+  transform: translateX(-50%) translateY(var(--parallax-y, 0px));
+  top: -520px;
+  width: 610px;
+  height: 1120px;
   z-index: 5;
+  pointer-events: auto;
+  outline: none;
+  animation: bloomPopCenter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+  will-change: transform, opacity, filter;
+  transition: z-index 0.3s ease;
+}
+
+.center-cutout-inner {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  pointer-events: none;
-  animation: bloomPopCenter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
-/* Right Photo: Enlarged to 350x470, tilted +11deg */
+.cutout-center-wrapper:hover,
+.cutout-center-wrapper:focus-visible {
+  z-index: 25;
+}
+
+.cutout-center-wrapper:hover .center-cutout-inner,
+.cutout-center-wrapper:focus-visible .center-cutout-inner {
+  transform: translateY(-14px) scale(1.05);
+}
+
+.cutout-center-wrapper:hover .center-cutout-img,
+.cutout-center-wrapper:focus-visible .center-cutout-img {
+  filter: drop-shadow(0 30px 58px rgba(29, 78, 168, 0.35)) drop-shadow(0 10px 22px rgba(0, 0, 0, 0.18)) brightness(1.04);
+  transform: scale(1.02);
+}
+
+/* Right Photo Container: Positioned right */
 .photo-card-right {
   position: absolute;
-  left: calc(50% + 40px);
+  left: calc(50% + 80px);
   top: 105px;
-  width: 350px;
-  height: 470px;
+  width: 375px;
+  height: 505px;
+  transform: translateY(var(--parallax-y, 0px));
+  z-index: 3;
+  pointer-events: auto;
+  outline: none;
+  animation: bloomPopRight 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
+  will-change: transform, opacity, filter;
+  transition: z-index 0.3s ease;
+}
+
+.photo-card-right .photo-card-inner {
+  width: 100%;
+  height: 100%;
   transform: rotate(11deg);
   border-radius: 20px;
   box-shadow: 0 22px 50px rgba(0, 0, 0, 0.16), 0 8px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  z-index: 3;
   background: #f8fafc;
-  animation: bloomPopRight 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  will-change: transform, box-shadow, filter;
 }
 
-.photo-card-right:hover {
-  transform: scale(1.03) rotate(8.5deg);
-  z-index: 15;
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22), 0 10px 25px rgba(0, 0, 0, 0.1);
+.photo-card-right:hover,
+.photo-card-right:focus-visible {
+  z-index: 20;
+}
+
+.photo-card-right:hover .photo-card-inner,
+.photo-card-right:focus-visible .photo-card-inner {
+  transform: translateY(-12px) scale(1.06) rotate(7.5deg);
+  box-shadow: 0 34px 70px rgba(29, 78, 168, 0.26), 0 14px 30px rgba(0, 0, 0, 0.14);
+  filter: brightness(1.03);
+}
+
+.photo-card-right:hover .card-img,
+.photo-card-right:focus-visible .card-img {
+  transform: scale(1.04);
 }
 
 .card-img {
@@ -229,6 +302,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .center-cutout-img {
@@ -237,60 +311,76 @@
   object-fit: contain;
   object-position: bottom center;
   filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.18));
+  transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ================= POP & BLOOM ENTRANCE KEYFRAMES ================= */
-@keyframes bloomPopLeft {
-  0% {
-    opacity: 0;
-    transform: scale(0.88) rotate(-16deg);
-    filter: brightness(1.18) blur(5px);
-  }
-  65% {
-    opacity: 1;
-    transform: scale(1.02) rotate(-10deg);
-    filter: brightness(1.04) blur(0.5px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(-10.5deg);
-    filter: brightness(1) blur(0);
-  }
-}
-
 @keyframes bloomPopCenter {
   0% {
     opacity: 0;
-    transform: translateX(-50%) scale(0.88) translateY(35px);
-    filter: brightness(1.2) blur(6px);
+    transform: translateX(-50%) translateY(calc(var(--parallax-y, 0px) + 65px)) scale(0.82);
+    filter: brightness(1.35) blur(12px) drop-shadow(0 0 30px rgba(29, 78, 168, 0.5));
   }
-  65% {
+  60% {
+    opacity: 0.96;
+    transform: translateX(-50%) translateY(calc(var(--parallax-y, 0px) - 6px)) scale(1.025);
+    filter: brightness(1.08) blur(1.5px) drop-shadow(0 22px 42px rgba(29, 78, 168, 0.28));
+  }
+  82% {
     opacity: 1;
-    transform: translateX(-50%) scale(1.02) translateY(-2px);
-    filter: brightness(1.04) blur(0.5px);
+    transform: translateX(-50%) translateY(calc(var(--parallax-y, 0px) + 2px)) scale(0.995);
+    filter: brightness(1.02) blur(0.2px);
   }
   100% {
     opacity: 1;
-    transform: translateX(-50%) scale(1) translateY(0);
-    filter: brightness(1) blur(0);
+    transform: translateX(-50%) translateY(var(--parallax-y, 0px)) scale(1);
+    filter: brightness(1) blur(0px);
+  }
+}
+
+@keyframes bloomPopLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(var(--parallax-y, 0px) + 55px)) scale(0.82);
+    filter: brightness(1.3) blur(12px);
+  }
+  62% {
+    opacity: 0.96;
+    transform: translateY(calc(var(--parallax-y, 0px) - 6px)) scale(1.025);
+    filter: brightness(1.08) blur(1.5px);
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(calc(var(--parallax-y, 0px) + 2px)) scale(0.995);
+    filter: brightness(1.02) blur(0.2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(var(--parallax-y, 0px)) scale(1);
+    filter: brightness(1) blur(0px);
   }
 }
 
 @keyframes bloomPopRight {
   0% {
     opacity: 0;
-    transform: scale(0.88) rotate(16deg);
-    filter: brightness(1.18) blur(5px);
+    transform: translateY(calc(var(--parallax-y, 0px) + 55px)) scale(0.82);
+    filter: brightness(1.3) blur(12px);
   }
-  65% {
+  62% {
+    opacity: 0.96;
+    transform: translateY(calc(var(--parallax-y, 0px) - 6px)) scale(1.025);
+    filter: brightness(1.08) blur(1.5px);
+  }
+  82% {
     opacity: 1;
-    transform: scale(1.02) rotate(10.5deg);
-    filter: brightness(1.04) blur(0.5px);
+    transform: translateY(calc(var(--parallax-y, 0px) + 2px)) scale(0.995);
+    filter: brightness(1.02) blur(0.2px);
   }
   100% {
     opacity: 1;
-    transform: scale(1) rotate(11deg);
-    filter: brightness(1) blur(0);
+    transform: translateY(var(--parallax-y, 0px)) scale(1);
+    filter: brightness(1) blur(0px);
   }
 }
 
@@ -329,17 +419,17 @@
 .hero-bio-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin-top: 30px;
+  gap: 80px;
+  margin-top: 50px;
   padding: 0 10px;
   width: 100%;
 }
 
 .hero-bio-col {
   font-family: var(--font-primary);
-  font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+  font-size: clamp(1.35rem, 1.8vw, 1.6rem);
   font-weight: 700;
-  line-height: 1.65;
+  line-height: 1.72;
   color: var(--text-blue);
   letter-spacing: -0.01em;
 }
@@ -350,7 +440,7 @@
     max-width: 960px;
   }
   .hero-center-spacer {
-    width: clamp(120px, 15vw, 170px);
+    width: clamp(130px, 16vw, 200px);
   }
   .hero-paper-plane-wrapper {
     left: calc(50% + 55px);
@@ -369,9 +459,9 @@
     top: 95px;
   }
   .cutout-center-wrapper {
-    width: 300px;
-    height: 600px;
-    top: -120px;
+    width: 350px;
+    height: 700px;
+    top: -180px;
   }
   .hero-collage-stage {
     height: 500px;
@@ -422,19 +512,25 @@
     width: 180px;
     height: 250px;
     top: 60px;
+  }
+  .photo-card-left .photo-card-inner {
     border-radius: 14px;
+    transform: rotate(-8deg);
   }
   .photo-card-right {
     left: calc(50% + 5px);
     width: 180px;
     height: 250px;
     top: 65px;
+  }
+  .photo-card-right .photo-card-inner {
     border-radius: 14px;
+    transform: rotate(8deg);
   }
   .cutout-center-wrapper {
-    width: 210px;
-    height: 390px;
-    top: -20px;
+    width: 240px;
+    height: 440px;
+    top: -40px;
   }
   .hero-bio-grid {
     grid-template-columns: 1fr;

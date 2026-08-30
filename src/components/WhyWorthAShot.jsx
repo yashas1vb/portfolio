@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Sparkles, Tv } from 'lucide-react';
 import './WhyWorthAShot.css';
 
-export default function WhyWorthAShot({ data }) {
+export default function WhyWorthAShot({ data, onZoomImage }) {
   const [imgErrors, setImgErrors] = useState({});
 
   const handleError = (id) => {
@@ -21,6 +21,7 @@ export default function WhyWorthAShot({ data }) {
 
   return (
     <section id="why-me" className="worth-section">
+      <div className="parallax-watermark" aria-hidden="true">WHY ME</div>
       <div className="container">
         <div className="worth-container">
           {/* Header with Title and Vintage TV Icon */}
@@ -50,7 +51,12 @@ export default function WhyWorthAShot({ data }) {
             {/* Left Column (3 cards) */}
             <div className="worth-column">
               {leftCards.map((card, idx) => (
-                <div key={card.id} className={`worth-card reveal-scale delay-${idx + 1}`}>
+                <div
+                  key={card.id}
+                  className={`worth-card reveal-scale delay-${idx + 1}`}
+                  onClick={() => onZoomImage && onZoomImage(card)}
+                  style={{ cursor: 'pointer' }}
+                >
                   {!imgErrors[card.id] && card.image ? (
                     <img
                       src={card.image}
@@ -76,7 +82,12 @@ export default function WhyWorthAShot({ data }) {
             {/* Right Column (2 cards, offset downwards) */}
             <div className="worth-column worth-column-offset">
               {rightCards.map((card, idx) => (
-                <div key={card.id} className={`worth-card reveal-scale delay-${idx + 2}`}>
+                <div
+                  key={card.id}
+                  className={`worth-card reveal-scale delay-${idx + 2}`}
+                  onClick={() => onZoomImage && onZoomImage(card)}
+                  style={{ cursor: 'pointer' }}
+                >
                   {!imgErrors[card.id] && card.image ? (
                     <img
                       src={card.image}

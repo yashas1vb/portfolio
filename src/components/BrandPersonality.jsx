@@ -10,7 +10,7 @@ export default function BrandPersonality({ data }) {
   };
 
   const {
-    title = "AND THEY COME WITH SOME PERSONALITY!!",
+    title = "And They Come with Some Personality!!",
     venues = [],
   } = data || {};
 

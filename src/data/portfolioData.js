@@ -51,9 +51,9 @@ export const portfolioData = {
     ],
   },
 
-  // Section 3: WHAT I BRING? (Why Me)
+  // Section 3: What I Bring? (Why Me)
   whatIBring: {
-    title: "WHAT I BRING?",
+    title: "What I Bring?",
     pillars: [
       {
         id: "pr",
@@ -136,7 +136,7 @@ export const portfolioData = {
 
   // Section 6: Brand Building - Popo Ventures (Case Study 3)
   brandBuilding: {
-    title: "OWNING THE NICHE",
+    title: "Owning the Niche",
     subtitle: "(Case Study)",
     ventureTitle: ["POPO", "VENTURES", "GOURMET IDEA", "TO IDENTITY"],
     logos: [
@@ -179,9 +179,9 @@ export const portfolioData = {
     ],
   },
 
-  // Section 7: And They Come With Some Personality!!
+  // Section 7: And They Come with Some Personality!!
   brandPersonality: {
-    title: "AND THEY COME WITH SOME PERSONALITY!!",
+    title: "And They Come with Some Personality!!",
     venues: [
       {
         id: "pizza-bakery",
@@ -206,7 +206,7 @@ export const portfolioData = {
 
   // Section 8: How Did They Evolve
   brandEvolution: {
-    title: "HOW DID THEY EVOLVE",
+    title: "How Did They Evolve",
     subtitle: "Finding a niche with a good idea is easy! Getting people to actually show up for it is the hard part.",
     items: [
       {
@@ -217,12 +217,12 @@ export const portfolioData = {
       {
         id: "food-truck",
         image: "/assets/evolution/Paris Panini Foodtruck.png",
-        text: "Started as a food truck, but traffic restrictions forced a pivot to evolve into casual dining with 17+ locations in Bangalore.",
+        text: "Began as a food truck, then pivoted due to traffic restrictions into a casual dining chain with 17+ Bangalore locations.",
       },
       {
         id: "smash-guys",
         image: "/assets/evolution/Smash pop-ups-Photoroom.png",
-        text: "Initially played around with curiosity on socials, then tested demand through pop-ups and secret drops. Now has 5+ dedicated outlets in Bangalore.",
+        text: "Scaled from social media pop-ups to 5+ dedicated Bangalore outlets.",
       },
     ],
     summary: "They worked hard to nail the product, prove demand, and expand in that order every time without missing a step.",
@@ -256,12 +256,13 @@ export const portfolioData = {
 
   // Section 10: The Strategy I'd Bring - GIVA Case Study
   prSocials: {
-    mainTitle: "THE STRATEGY I'D BRING",
+    mainTitle: "The Strategy I'd Bring",
     caseTitleLines: ["GIVA", "FROM", "BACKLASH", "TO", "BELIEF"],
     campaignImage: "/assets/pr-strategy/giva-campaign.png",
     apologyImage: "/assets/pr-strategy/kriti-message.jpeg",
+    apologyImage2: "/assets/pr-strategy/message-2.jpeg",
     context: "What happened: Rakhi ad, backlash, ad pulled, apology posted.",
-    approachHeading: "How my approach would look like",
+    approachHeading: "How My Approach Would Look Like",
     phases: [
       {
         id: "phase-1",
@@ -289,11 +290,11 @@ export const portfolioData = {
         title: "Phase 4 – Sustain",
         body: 'A "Wear It Your Way" festive collection, pieces reflecting how women across India actually celebrate. Different regions, different stories, one belief: tradition worn on her own terms.',
         coreThought: "Core thought: Culture is carried from the heart and not measured.",
-        colorScheme: "dark-green",
+        colorScheme: "dark-pink",
         rotation: "2deg",
       },
     ],
-    inHerWordsHeading: "In Her Words – What the campaign would actually sound like from Kriti!",
+    inHerWordsHeading: "GIVA Responds through Kriti!",
     wordsCards: [
       {
         id: "word-1",
@@ -309,7 +310,7 @@ export const portfolioData = {
       },
       {
         id: "word-3",
-        body: "Wear It Your Way.",
+        body: "Campaign Tagline:\n\n\"wear it your way\"",
         isHighlight: true,
         colorScheme: "dark-blue",
         rotation: "-1.2deg",
@@ -325,9 +326,9 @@ export const portfolioData = {
 
   // Section 11: Finding Right Voice For Your Brand! (Tin and Tah)
   influencerVoice: {
-    mainTitle: "FINDING RIGHT VOICE FOR YOUR BRAND!",
-    subtitle: "(INFLUENCER MARKETING)",
-    brandTitleLines: ["TIN", "AND TAH", "THE", "CRAFT", "YOU CAN", "CARRY"],
+    mainTitle: "Finding Right Voice for Your Brand!",
+    subtitle: "(SOCIAL MEDIA CONTENT STRATERGY)",
+    brandTitleLines: ["TIN", "AND TAH", "THE", "CRAFT", "YOU CARRY"],
     heroImage: "/assets/influencer-voice/tin-and-tah-hero.png",
     heroStatement: "The craft already has a story. What it needs is more eyes on it, especially outside India.",
     middleImage: "/assets/influencer-voice/model-box-pose.png",
@@ -336,29 +337,29 @@ export const portfolioData = {
       {
         id: "diaspora",
         image: "/assets/influencer-voice/creator-diaspora.png",
-        caption: "start with diaspora creators, people of Indian origin abroad who already get the culture and already have an audience that isn't Indian.",
+        caption: "Show it to a local artisan, any craft. They don't critique it, they make something inspired by it, in their own medium.",
       },
       {
         id: "reach",
         image: "/assets/influencer-voice/creator-reach.png",
-        caption: "diaspora creators build credibility first, then their reach brings in non-Indian creators who genuinely love bold, detailed fashion.",
+        caption: "Start with diaspora creators abroad, people who already get the culture and already have an audience that isn't Indian.",
       },
       {
         id: "unboxing",
         image: "/assets/influencer-voice/creator-unboxing.png",
-        caption: "start with barter and gifting, move to paid once the interest is real.",
+        caption: "Start with gifting first, go paid once the interest is real.",
       },
       {
         id: "success",
         image: "/assets/influencer-voice/creator-success.png",
-        caption: "At the end, success is creators wearing it without a second ask, tagging it themselves, & their followers asking \"where's this from?\"",
+        caption: "Success is creators wearing it without a second ask, tagging it themselves, and followers asking where it's from.",
       },
     ],
   },
 
-  // Section 12: OH, I ALSO MAKE THINGS (Flipkart & Voyante AI Campaign)
+  // Section 12: Oh, I Also Make Things (Flipkart & Voyante AI Campaign)
   creativeWorks: {
-    mainTitle: "OH, I ALSO MAKE THINGS",
+    mainTitle: "Oh, I Also Make Things",
     flipkart: {
       title: "Flipkart Conceptual Campaigns",
       posters: [
@@ -418,7 +419,7 @@ export const portfolioData = {
 
   // Section 13: Educational Side Quests
   sideQuests: {
-    title: "EDUCATIONAL SIDE QUESTS",
+    title: "Educational Side Quests",
     quests: [
       {
         id: "conclave",

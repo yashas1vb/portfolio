@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { X } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ThingsINotice from './components/ThingsINotice';
@@ -16,8 +18,19 @@ import WhyWorthAShot from './components/WhyWorthAShot';
 import ContactSection from './components/ContactSection';
 import { portfolioData } from './data/portfolioData';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { useParallax } from './hooks/useParallax';
 
 export default function App() {
+  const [activeZoomImage, setActiveZoomImage] = useState(null);
+  const [showResume, setShowResume] = useState(false);
+
+  // Initialize smooth momentum scroll (Lenis) for 60fps velocity-based scrolling
+  useSmoothScroll();
+
+  // Initialize multi-layer parallax depth on scroll
+  useParallax();
+
   // Initialize smooth on-scroll reveal animations across all sections
   useScrollReveal();
 
@@ -31,48 +44,129 @@ export default function App() {
         {/* Section 1: Hero */}
         <Hero personal={portfolioData.personal} />
 
-        {/* Section 2: Things I Notice! (My Take) */}
-        <ThingsINotice data={portfolioData.thingsINotice} />
+        {/* Section 2: Things I Notice! (Horizontal Slide from Right) */}
+        <div className="scroll-slide-wrapper scroll-slide-right" data-scroll-type="horizontal-right">
+          <ThingsINotice data={portfolioData.thingsINotice} />
+        </div>
 
-        {/* Section 3: WHAT I BRING? */}
-        <WhatIBring data={portfolioData.whatIBring} />
+        {/* Section 3: What I Bring? (Vertical Slide from Bottom) */}
+        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+          <WhatIBring data={portfolioData.whatIBring} />
+        </div>
 
-        {/* Section 4: STORIES THAT GOT ME SEEN! (Case Study 1) */}
-        <StoriesSeen data={portfolioData.storiesThatGotMeSeen} />
+        {/* Section 4: Stories That Got Me Seen! (Horizontal Slide from Left) */}
+        <div className="scroll-slide-wrapper scroll-slide-left" data-scroll-type="horizontal-left">
+          <StoriesSeen data={portfolioData.storiesThatGotMeSeen} />
+        </div>
 
-        {/* Section 5: I WENT CREATOR HUNTING (Case Study 2) */}
-        <CreatorHunting data={portfolioData.creatorHunting} />
+        {/* Section 5: Creator Hunting (Vertical Slide from Bottom) */}
+        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+          <CreatorHunting data={portfolioData.creatorHunting} />
+        </div>
 
-        {/* Section 6: BRAND BUILDING (Case Study 3 - Popo Ventures) */}
-        <BrandBuilding data={portfolioData.brandBuilding} />
+        {/* Section 6: Brand Building / Popo Ventures (Horizontal Slide from Right) */}
+        <div className="scroll-slide-wrapper scroll-slide-right" data-scroll-type="horizontal-right">
+          <BrandBuilding data={portfolioData.brandBuilding} />
+        </div>
 
-        {/* Section 7: AND THEY COME WITH SOME PERSONALITY!! */}
-        <BrandPersonality data={portfolioData.brandPersonality} />
+        {/* Section 7: Brand Personality (Vertical Slide from Bottom) */}
+        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+          <BrandPersonality data={portfolioData.brandPersonality} />
+        </div>
 
-        {/* Section 8: HOW DID THEY EVOLVE */}
-        <BrandEvolution data={portfolioData.brandEvolution} />
+        {/* Section 8: Brand Evolution (Horizontal Slide from Left) */}
+        <div className="scroll-slide-wrapper scroll-slide-left" data-scroll-type="horizontal-left">
+          <BrandEvolution data={portfolioData.brandEvolution} />
+        </div>
 
-        {/* Section 9: WHEN FOUNDER BECOME THE FACE! */}
-        <FounderFace data={portfolioData.founderFace} />
+        {/* Section 9: Founder Face (Vertical Slide from Bottom) */}
+        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+          <FounderFace data={portfolioData.founderFace} />
+        </div>
 
-        {/* Section 10: IF I DID YOUR PR/SOCIALS */}
-        <PRSocials data={portfolioData.prSocials} />
+        {/* Section 10: The Strategy I'd Bring / PR Socials (Horizontal Slide from Right) */}
+        <div className="scroll-slide-wrapper scroll-slide-right" data-scroll-type="horizontal-right">
+          <PRSocials data={portfolioData.prSocials} />
+        </div>
 
-        {/* Section 11: FINDING RIGHT VOICE FOR YOUR BRAND! (Tin and Tah) */}
-        <InfluencerVoice data={portfolioData.influencerVoice} />
+        {/* Section 11: Influencer Voice / Tin and Tah (Vertical Slide from Bottom) */}
+        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+          <InfluencerVoice data={portfolioData.influencerVoice} onZoomImage={setActiveZoomImage} />
+        </div>
 
-        {/* Section 12: OH, I ALSO MAKE THINGS (Flipkart & Voyante AI Campaign) */}
-        <CreativeWorks data={portfolioData.creativeWorks} />
+        {/* Section 12: Creative Works / Flipkart & Voyante (Horizontal Slide from Left) */}
+        <div className="scroll-slide-wrapper scroll-slide-left" data-scroll-type="horizontal-left">
+          <CreativeWorks data={portfolioData.creativeWorks} onZoomImage={setActiveZoomImage} />
+        </div>
 
-        {/* Section 13: EDUCATIONAL SIDE QUESTS */}
-        <SideQuests data={portfolioData.sideQuests} />
+        {/* Section 13: Educational Side Quests (Vertical Slide from Bottom) */}
+        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+          <SideQuests data={portfolioData.sideQuests} />
+        </div>
 
-        {/* Section 14: WHY I'M WORTH A SHOT! (Why Me) */}
-        <WhyWorthAShot data={portfolioData.worthAShot} />
+        {/* Section 14: Why I'm Worth A Shot! (Horizontal Slide from Right) */}
+        <div className="scroll-slide-wrapper scroll-slide-right" data-scroll-type="horizontal-right">
+          <WhyWorthAShot data={portfolioData.worthAShot} onZoomImage={setActiveZoomImage} />
+        </div>
       </main>
 
-      {/* Section 15: Contact Footer */}
-      <ContactSection contact={portfolioData.contact} personal={portfolioData.personal} />
+      {/* Section 15: Contact Footer (Vertical Slide from Bottom) */}
+      <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+        <ContactSection
+          contact={portfolioData.contact}
+          personal={portfolioData.personal}
+          onViewResume={() => setShowResume(true)}
+        />
+      </div>
+
+      {/* Zoom Image Modal */}
+      {activeZoomImage && (
+        <div className="worth-modal-overlay" onClick={() => setActiveZoomImage(null)}>
+          <div className="worth-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="worth-modal-close" onClick={() => setActiveZoomImage(null)} aria-label="Close modal">
+              <X size={28} />
+            </button>
+            <img src={activeZoomImage.image} alt={activeZoomImage.caption} className="worth-modal-img" />
+            {activeZoomImage.caption && <p className="worth-modal-caption">{activeZoomImage.caption}</p>}
+          </div>
+        </div>
+      )}
+
+      {/* Resume PDF Viewer Modal */}
+      {showResume && (
+        <div className="resume-modal-overlay" onClick={() => setShowResume(false)}>
+          <div className="resume-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="resume-modal-header">
+              <span className="resume-modal-title">Supriya V Naregal - Resume</span>
+              <div className="resume-modal-actions">
+                <a
+                  href="/assets/worth-a-shot/Supriya%20V%20Naregal.pdf"
+                  download="Supriya_V_Naregal_Resume.pdf"
+                  className="resume-download-btn"
+                >
+                  Download PDF
+                </a>
+                <button
+                  className="resume-close-btn"
+                  onClick={() => setShowResume(false)}
+                  aria-label="Close resume"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+            <div className="resume-modal-body">
+              <iframe
+                src="/assets/worth-a-shot/Supriya%20V%20Naregal.pdf#toolbar=0"
+                width="100%"
+                height="100%"
+                title="Supriya V Naregal Resume"
+                style={{ border: 'none', borderRadius: '8px' }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

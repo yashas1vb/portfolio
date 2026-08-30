@@ -26,7 +26,7 @@ export function useScrollReveal() {
 
     const observeElements = () => {
       const elements = document.querySelectorAll(
-        '.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-stagger, .reveal-sticky'
+        '.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-stagger, .reveal-sticky, .scroll-slide-wrapper, .scroll-slide-right, .scroll-slide-left, .scroll-slide-up'
       );
       elements.forEach((el) => observer.observe(el));
     };

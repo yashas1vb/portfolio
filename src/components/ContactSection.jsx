@@ -1,8 +1,8 @@
-import { Mail, ArrowUp } from 'lucide-react';
+import { Mail, ArrowUp, FileText } from 'lucide-react';
 import { LinkedinIcon } from './Icons';
 import './ContactSection.css';
 
-export default function ContactSection({ contact, personal }) {
+export default function ContactSection({ contact, personal, onViewResume }) {
   const email = personal?.socialLinks?.email || 'mailto:supriyavnaregal@gmail.com';
   const linkedin = personal?.socialLinks?.linkedin || 'http://www.linkedin.com/in/supriyanaregal';
   const currentYear = new Date().getFullYear();
@@ -21,6 +21,9 @@ export default function ContactSection({ contact, personal }) {
             <a href={email} className="contact-mail-btn">
               <Mail size={20} /> Say Hello via Email
             </a>
+            <button onClick={onViewResume} className="contact-resume-btn">
+              <FileText size={20} /> View My Resume
+            </button>
             <a href={linkedin} target="_blank" rel="noreferrer" className="contact-linkedin-btn">
               <LinkedinIcon size={20} color="#ffffff" /> Connect on LinkedIn
             </a>

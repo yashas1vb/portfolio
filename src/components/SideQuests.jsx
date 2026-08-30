@@ -9,7 +9,7 @@ export default function SideQuests({ data }) {
     setImgErrors((prev) => ({ ...prev, [id]: true }));
   };
 
-  const { title = "EDUCATIONAL SIDE QUESTS", quests = [] } = data || {};
+  const { title = "Educational Side Quests", quests = [] } = data || {};
 
   return (
     <section id="side-quests" className="quests-section">

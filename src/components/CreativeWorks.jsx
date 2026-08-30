@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Play, Sparkles, Image as ImageIcon } from 'lucide-react';
 import './CreativeWorks.css';
 
-export default function CreativeWorks({ data }) {
+export default function CreativeWorks({ data, onZoomImage }) {
   const [imgErrors, setImgErrors] = useState({});
 
   const handleError = (id) => {
@@ -10,7 +10,7 @@ export default function CreativeWorks({ data }) {
   };
 
   const {
-    mainTitle = "OH, I ALSO MAKE THINGS",
+    mainTitle = "Oh, I Also Make Things",
     flipkart = {},
     voyante = {},
     aiVideo = {},
@@ -18,6 +18,7 @@ export default function CreativeWorks({ data }) {
 
   return (
     <section id="creative-works" className="creative-section">
+      <div className="parallax-watermark" aria-hidden="true">CREATIVE WORKS</div>
       <div className="container">
         <div className="creative-container">
           {/* Main Title */}
@@ -106,45 +107,16 @@ export default function CreativeWorks({ data }) {
               <h4 className="storyboard-title">{voyante.storyboardTitle}</h4>
               <div className="storyboard-sub">{voyante.storyboardSub}</div>
 
-              <div className="storyboard-scenes-layout">
-                {/* Scene 1: Top Center */}
-                {voyante.scenes?.[0] && (
-                  <div className="storyboard-scene-center">
-                    <div className="storyboard-scene-title">{voyante.scenes[0].title}</div>
-                    <div className="storyboard-scene-frame">
-                      <img
-                        src={voyante.scenes[0].image}
-                        alt={voyante.scenes[0].title}
-                        className="storyboard-scene-img"
-                        onError={() => handleError('scene-1')}
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {/* Scenes 2 & 3: Row 2 */}
-                <div className="storyboard-scenes-row">
-                  {voyante.scenes?.slice(1, 3).map((scene) => (
-                    <div key={scene.id} className="storyboard-scene-item">
+              <div className="storyboard-carousel-wrapper">
+                <div className="storyboard-scenes-track">
+                  {voyante.scenes?.map((scene, idx) => (
+                    <div key={scene.id || idx} className="storyboard-scene-item">
                       <div className="storyboard-scene-title">{scene.title}</div>
-                      <div className="storyboard-scene-frame">
-                        <img
-                          src={scene.image}
-                          alt={scene.title}
-                          className="storyboard-scene-img"
-                          onError={() => handleError(scene.id)}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Scenes 4 & 5: Row 3 */}
-                <div className="storyboard-scenes-row">
-                  {voyante.scenes?.slice(3, 5).map((scene) => (
-                    <div key={scene.id} className="storyboard-scene-item">
-                      <div className="storyboard-scene-title">{scene.title}</div>
-                      <div className="storyboard-scene-frame">
+                      <div
+                        className="storyboard-scene-frame"
+                        onClick={() => onZoomImage && onZoomImage({ image: scene.image, caption: scene.title })}
+                        style={{ cursor: 'pointer' }}
+                      >
                         <img
                           src={scene.image}
                           alt={scene.title}
@@ -163,15 +135,27 @@ export default function CreativeWorks({ data }) {
           <div className="ai-video-block reveal delay-1">
             <h3 className="ai-video-title">{aiVideo.title}</h3>
 
-            <div className="ai-video-card">
+            <div
+              className="ai-video-card-zoomable"
+              onClick={() => onZoomImage && onZoomImage({ videoUrl: aiVideo.videoUrl, caption: aiVideo.title })}
+              style={{ cursor: 'pointer' }}
+            >
               {aiVideo.videoUrl ? (
-                <video
-                  src={aiVideo.videoUrl}
-                  poster={aiVideo.poster}
-                  controls
-                  playsInline
-                  className="ai-video-player"
-                />
+                <>
+                  <video
+                    src={aiVideo.videoUrl}
+                    poster={aiVideo.poster}
+                    muted
+                    playsInline
+                    loop
+                    autoPlay
+                    className="ai-video-player-preview"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
+                  />
+                  <div className="ai-video-play-overlay">
+                    <Play size={48} color="#ffffff" fill="#ffffff" />
+                  </div>
+                </>
               ) : (
                 <div className="creative-placeholder">
                   <Play size={44} />

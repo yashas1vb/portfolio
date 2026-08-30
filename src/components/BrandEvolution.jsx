@@ -10,7 +10,7 @@ export default function BrandEvolution({ data }) {
   };
 
   const {
-    title = "HOW DID THEY EVOLVE",
+    title = "How Did They Evolve",
     subtitle = "Finding a niche with a good idea is easy! Getting people to actually show up for it is the hard part.",
     items = [],
     summary = "They worked hard to nail the product, prove demand, and expand in that order every time without missing a step.",
@@ -22,6 +22,7 @@ export default function BrandEvolution({ data }) {
 
   return (
     <section id="evolution" className="evolution-section">
+      <div className="parallax-watermark" aria-hidden="true">EVOLUTION</div>
       <div className="container">
         {/* Main Section Header */}
         <div className="evolution-header-area reveal">
@@ -29,10 +30,11 @@ export default function BrandEvolution({ data }) {
           {subtitle && <p className="evolution-subtitle">{subtitle}</p>}
         </div>
 
-        <div className="evolution-list">
-          {/* Row 1: The Pizza Bakery Round 3D Sign */}
-          <div className="evolution-row reveal delay-1">
-            <div className="evolution-image-wrap reveal-left">
+        {/* 3 Evolution Items Side-by-Side in a Row */}
+        <div className="evolution-grid">
+          {/* Item 1: The Pizza Bakery Round 3D Sign */}
+          <div className="evolution-col reveal delay-1">
+            <div className="evolution-image-wrap">
               <div className="evolution-cutout-card pb-sign-wrap">
                 {!imgErrors['pizza-bakery'] && pizzaItem.image ? (
                   <img
@@ -50,14 +52,14 @@ export default function BrandEvolution({ data }) {
               </div>
             </div>
 
-            <div className="evolution-text reveal-right">
+            <div className="evolution-text">
               <p>{pizzaItem.text}</p>
             </div>
           </div>
 
-          {/* Row 2: Paris Panini Vintage Food Truck */}
-          <div className="evolution-row reveal delay-2">
-            <div className="evolution-image-wrap reveal-left">
+          {/* Item 2: Paris Panini Vintage Food Truck */}
+          <div className="evolution-col reveal delay-2">
+            <div className="evolution-image-wrap">
               <div className="evolution-cutout-card foodtruck-wrap">
                 {!imgErrors['food-truck'] && truckItem.image ? (
                   <img
@@ -75,14 +77,14 @@ export default function BrandEvolution({ data }) {
               </div>
             </div>
 
-            <div className="evolution-text reveal-right">
+            <div className="evolution-text">
               <p>{truckItem.text}</p>
             </div>
           </div>
 
-          {/* Row 3: Smash Guys Founder / Pop-ups */}
-          <div className="evolution-row reveal delay-3">
-            <div className="evolution-image-wrap reveal-left">
+          {/* Item 3: Smash Guys Founder / Pop-ups */}
+          <div className="evolution-col reveal delay-3">
+            <div className="evolution-image-wrap">
               <div className="evolution-cutout-card smash-chef-wrap">
                 {!imgErrors['smash-guys'] && smashItem.image ? (
                   <img
@@ -100,7 +102,7 @@ export default function BrandEvolution({ data }) {
               </div>
             </div>
 
-            <div className="evolution-text reveal-right">
+            <div className="evolution-text">
               <p>{smashItem.text}</p>
             </div>
           </div>

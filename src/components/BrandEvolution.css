@@ -1,5 +1,5 @@
 .evolution-section {
-  padding: 50px 0 80px;
+  padding: 50px 0 70px;
   background: #ffffff;
   position: relative;
   overflow: hidden;
@@ -9,48 +9,51 @@
 /* ================= HEADER AREA ================= */
 .evolution-header-area {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   padding: 0 16px;
 }
 
 .evolution-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+  font-size: clamp(2.8rem, 6.2vw, 4.8rem);
   font-weight: 800;
   color: var(--text-blue);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
 }
 
 .evolution-subtitle {
   font-family: var(--font-primary);
-  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  font-size: clamp(1.2rem, 1.7vw, 1.7rem);
   font-weight: 700;
   color: var(--text-blue);
-  max-width: 680px;
+  max-width: 96%;
+  width: max-content;
   margin: 0 auto;
   line-height: 1.45;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
-/* ================= 3 EVOLUTION ROWS CONTAINER ================= */
-.evolution-list {
+/* ================= 3 EVOLUTION ITEMS ROW (GRID) ================= */
+.evolution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 40px);
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+  align-items: start;
+  padding: 0 10px;
+}
+
+/* Evolution Column (Image Top, Text Bottom) */
+.evolution-col {
   display: flex;
   flex-direction: column;
-  gap: clamp(18px, 2.5vw, 32px);
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-/* Evolution Row (Image Left, Text Right) */
-.evolution-row {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
   align-items: center;
-  gap: 40px;
-  padding: 0 10px;
+  text-align: center;
+  gap: 22px;
 }
 
 .evolution-image-wrap {
@@ -58,6 +61,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 350px;
 }
 
 .evolution-cutout-card {
@@ -68,11 +72,11 @@
 }
 
 .evolution-cutout-card:hover {
-  transform: scale(1.04);
+  transform: translateY(-6px) scale(1.04);
 }
 
 .evolution-cutout-img {
-  width: 100%;
+  width: auto;
   height: auto;
   object-fit: contain;
   display: block;
@@ -80,7 +84,8 @@
 
 /* 1. PB Sign */
 .pb-sign-img {
-  max-width: 320px;
+  max-height: 310px;
+  max-width: 310px;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.16));
 }
 
@@ -90,7 +95,8 @@
 
 /* 2. Vintage Food Truck */
 .foodtruck-img {
-  max-width: 450px;
+  max-height: 300px;
+  max-width: 440px;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.16));
 }
 
@@ -100,7 +106,8 @@
 
 /* 3. Smash Pop-up Chef */
 .smash-chef-img {
-  max-width: 340px;
+  max-height: 330px;
+  max-width: 330px;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.16));
 }
 
@@ -108,47 +115,51 @@
   filter: drop-shadow(0 22px 42px rgba(0, 0, 0, 0.22));
 }
 
-/* Text Styling */
+/* Text Styling below images */
 .evolution-text {
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  justify-content: center;
+  width: 100%;
 }
 
 .evolution-text p {
   font-family: var(--font-primary);
-  font-size: clamp(1.2rem, 1.85vw, 1.55rem);
+  font-size: clamp(1.3rem, 1.8vw, 1.55rem);
   font-weight: 700;
   color: var(--text-blue);
-  line-height: 1.45;
+  line-height: 1.5;
   letter-spacing: -0.01em;
-  max-width: 520px;
+  text-align: center;
   margin: 0;
+  max-width: 520px;
 }
 
 /* ================= BOTTOM SUMMARY PARAGRAPH ================= */
 .evolution-bottom-summary {
   text-align: center;
-  max-width: 820px;
-  margin: 36px auto 0;
+  max-width: 96%;
+  width: max-content;
+  margin: 42px auto 0;
   padding: 0 16px;
 }
 
 .evolution-summary-text {
   font-family: var(--font-primary);
-  font-size: clamp(1.2rem, 1.85vw, 1.55rem);
+  font-size: clamp(1.25rem, 1.6vw, 1.65rem);
   font-weight: 700;
   color: var(--text-blue);
-  line-height: 1.45;
+  line-height: 1.5;
   letter-spacing: -0.01em;
   margin: 0;
+  white-space: nowrap;
 }
 
 /* Placeholder */
 .evolution-placeholder {
   width: 100%;
-  max-width: 320px;
-  height: 220px;
+  max-width: 260px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -175,43 +186,33 @@
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 860px) {
+@media (max-width: 960px) {
   .evolution-section {
-    padding: 40px 0 60px;
+    padding: 35px 0 50px;
   }
 
-  .evolution-header-area {
-    margin-bottom: 40px;
-  }
-
-  .evolution-row {
+  .evolution-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
-    text-align: center;
+    gap: 36px;
+    max-width: 520px;
   }
 
-  .evolution-text {
-    justify-content: center;
+  .evolution-image-wrap {
+    height: 200px;
   }
 
   .evolution-text p {
-    text-align: center;
     max-width: 100%;
-  }
-
-  .pb-sign-img {
-    max-width: 240px;
-  }
-
-  .foodtruck-img {
-    max-width: 340px;
-  }
-
-  .smash-chef-img {
-    max-width: 260px;
   }
 
   .evolution-bottom-summary {
     margin-top: 35px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .evolution-subtitle,
+  .evolution-summary-text {
+    white-space: normal;
   }
 }

@@ -1,5 +1,5 @@
 .personality-section {
-  padding: 20px 0 100px;
+  padding: 30px 0 45px;
   background: #ffffff;
   position: relative;
   overflow: hidden;
@@ -12,7 +12,7 @@
   font-weight: 800;
   color: var(--text-blue);
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
   letter-spacing: -0.01em;
 }
 
@@ -55,32 +55,34 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(226, 239, 255, 0.92);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  padding: 14px 36px;
-  border-radius: 4px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 18px 42px;
+  border-radius: 16px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   max-width: 86%;
   width: max-content;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 5;
 }
 
 .personality-card:hover .personality-overlay-pill {
-  background: rgba(240, 248, 255, 0.98);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  transform: translate(-50%, -50%) scale(1.02);
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  transform: translate(-50%, -50%) scale(1.025);
 }
 
 .personality-pill-text {
   font-family: var(--font-primary);
-  font-size: clamp(1rem, 1.55vw, 1.25rem);
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
   font-weight: 700;
-  color: var(--text-blue);
+  color: #ffffff;
   line-height: 1.5;
   margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   letter-spacing: -0.01em;
 }
 

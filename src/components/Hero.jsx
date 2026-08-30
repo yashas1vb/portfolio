@@ -41,39 +41,43 @@ export default function Hero({ personal }) {
           {/* 3-Photo Collage Stage & Paper Plane */}
           <div className="hero-collage-stage">
             {/* Left Tilted Photo (Red shirt pose) - Enlarged with Pop/Bloom Entrance */}
-            <div className="photo-card-left">
-              {!leftErr && images.leftPhoto ? (
-                <img
-                  src={images.leftPhoto}
-                  alt="Supriya - Left pose"
-                  className="card-img"
-                  onError={() => setLeftErr(true)}
-                />
-              ) : (
-                <div className="hero-placeholder">
-                  <ImageIcon size={50} />
-                  <span>Left Photo</span>
-                  <small>/assets/hero/hero-left.webp</small>
-                </div>
-              )}
+            <div className="photo-card-left" id="hero-photo-left" tabIndex={0} role="figure" aria-label="Supriya - Left photo">
+              <div className="photo-card-inner">
+                {!leftErr && images.leftPhoto ? (
+                  <img
+                    src={images.leftPhoto}
+                    alt="Supriya - Left pose"
+                    className="card-img"
+                    onError={() => setLeftErr(true)}
+                  />
+                ) : (
+                  <div className="hero-placeholder">
+                    <ImageIcon size={50} />
+                    <span>Left Photo</span>
+                    <small>/assets/hero/hero-left.webp</small>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Center Standing Cutout (Emerges up between Supriya and Naregal) */}
-            <div className="cutout-center-wrapper">
-              {!centerErr && images.centerPhoto ? (
-                <img
-                  src={images.centerPhoto}
-                  alt="Supriya Naregal"
-                  className="center-cutout-img"
-                  onError={() => setCenterErr(true)}
-                />
-              ) : (
-                <div className="hero-placeholder" style={{ borderRadius: '16px', height: '90%', width: '90%' }}>
-                  <ImageIcon size={38} />
-                  <span>Center Cutout</span>
-                  <small>/assets/hero/hero-center.png</small>
-                </div>
-              )}
+            <div className="cutout-center-wrapper" id="hero-cutout-center" tabIndex={0} role="figure" aria-label="Supriya Naregal cutout">
+              <div className="center-cutout-inner">
+                {!centerErr && images.centerPhoto ? (
+                  <img
+                    src={images.centerPhoto}
+                    alt="Supriya Naregal"
+                    className="center-cutout-img"
+                    onError={() => setCenterErr(true)}
+                  />
+                ) : (
+                  <div className="hero-placeholder" style={{ borderRadius: '16px', height: '90%', width: '90%' }}>
+                    <ImageIcon size={38} />
+                    <span>Center Cutout</span>
+                    <small>/assets/hero/hero-center.png</small>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Minimalist 3D Paper Plane Animation traveling beside the center cutout */}
@@ -120,21 +124,23 @@ export default function Hero({ personal }) {
             </div>
 
             {/* Right Tilted Photo (Black top pose) - Enlarged with Pop/Bloom Entrance */}
-            <div className="photo-card-right">
-              {!rightErr && images.rightPhoto ? (
-                <img
-                  src={images.rightPhoto}
-                  alt="Supriya - Right pose"
-                  className="card-img"
-                  onError={() => setRightErr(true)}
-                />
-              ) : (
-                <div className="hero-placeholder">
-                  <ImageIcon size={26} />
-                  <span>Right Photo</span>
-                  <small>/assets/hero/hero-right.jpeg</small>
-                </div>
-              )}
+            <div className="photo-card-right" id="hero-photo-right" tabIndex={0} role="figure" aria-label="Supriya - Right photo">
+              <div className="photo-card-inner">
+                {!rightErr && images.rightPhoto ? (
+                  <img
+                    src={images.rightPhoto}
+                    alt="Supriya - Right pose"
+                    className="card-img"
+                    onError={() => setRightErr(true)}
+                  />
+                ) : (
+                  <div className="hero-placeholder">
+                    <ImageIcon size={26} />
+                    <span>Right Photo</span>
+                    <small>/assets/hero/hero-right.jpeg</small>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 

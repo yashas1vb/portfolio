@@ -25,6 +25,7 @@ export default function CreatorHunting({ data }) {
 
   return (
     <section id="creator-hunting" className="creator-hunting-section">
+      <div className="parallax-watermark" aria-hidden="true">CREATOR HUNT</div>
       <div className="container">
         <div className="creator-hunting-grid">
           {/* Left Column: Stacked Title + Role + Process Steps */}

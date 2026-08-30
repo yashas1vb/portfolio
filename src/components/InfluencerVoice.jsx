@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ShoppingBag, Users } from 'lucide-react';
 import './InfluencerVoice.css';
 
-export default function InfluencerVoice({ data }) {
+export default function InfluencerVoice({ data, onZoomImage }) {
   const [imgErrors, setImgErrors] = useState({});
 
   const handleError = (id) => {
@@ -10,10 +10,10 @@ export default function InfluencerVoice({ data }) {
   };
 
   const {
-    mainTitle = "FINDING RIGHT VOICE FOR YOUR BRAND!",
-    subtitle = "(INFLUENCER MARKETING)",
-    brandTitleLines = ["TIN", "AND TAH", "THE", "CRAFT", "YOU CAN", "CARRY"],
-    heroImage = "/assets/influencer-voice/tin-and-tah-hero.jpg",
+    mainTitle = "Finding Right Voice for Your Brand!",
+    subtitle = "(SOCIAL MEDIA CONTENT STRATERGY)",
+    brandTitleLines = ["TIN", "AND TAH", "THE", "CRAFT", "YOU CARRY"],
+    heroImage = "/assets/influencer-voice/tin-and-tah-hero.png",
     heroStatement = "",
     middleImage = "/assets/influencer-voice/model-box-pose.png",
     middleStatement = "",
@@ -22,6 +22,7 @@ export default function InfluencerVoice({ data }) {
 
   return (
     <section id="influencer-voice" className="voice-section">
+      <div className="parallax-watermark" aria-hidden="true">TIN & TAH</div>
       <div className="container">
         <div className="voice-container">
           {/* Header Title & Subtitle */}
@@ -90,7 +91,12 @@ export default function InfluencerVoice({ data }) {
           {/* Block 3: 2x2 Creator Strategy Showcase Cards */}
           <div className="voice-creators-grid">
             {creatorCards.map((card, idx) => (
-              <div key={card.id} className={`creator-card reveal-scale delay-${idx + 1}`}>
+              <div
+                key={card.id}
+                className={`creator-card reveal-scale delay-${idx + 1}`}
+                onClick={() => onZoomImage && onZoomImage(card)}
+                style={{ cursor: 'pointer' }}
+              >
                 {!imgErrors[card.id] && card.image ? (
                   <img
                     src={card.image}

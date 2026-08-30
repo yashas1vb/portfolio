@@ -1,5 +1,5 @@
 .creator-hunting-section {
-  padding: 70px 0 35px;
+  padding: 36px 0 45px;
   background: #ffffff;
   position: relative;
   overflow: hidden;
@@ -64,16 +64,33 @@
   font-weight: 700;
   color: var(--text-blue);
   letter-spacing: -0.01em;
-  line-height: 1.3;
+  line-height: 1.35;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.creator-hunting-point-item::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-blue);
+  flex-shrink: 0;
+  margin-top: 0.42em;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .creator-hunting-point-item:hover {
   color: var(--text-blue-light);
   transform: translateX(5px);
+}
+
+.creator-hunting-point-item:hover::before {
+  background: var(--text-blue-light);
+  transform: scale(1.25);
 }
 
 /* ================= RIGHT CREATOR STACK COLUMN ================= */

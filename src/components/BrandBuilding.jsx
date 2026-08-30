@@ -15,7 +15,7 @@ export default function BrandBuilding({ data }) {
   };
 
   const {
-    title = "OWNING THE NICHE",
+    title = "Owning the Niche",
     subtitle = "(Case Study)",
     ventureTitle = ["POPO", "VENTURES", "GOURMET IDEA", "TO IDENTITY"],
     logos = [
@@ -29,6 +29,7 @@ export default function BrandBuilding({ data }) {
 
   return (
     <section id="brand-building" className="brand-section">
+      <div className="parallax-watermark" aria-hidden="true">POPO VENTURES</div>
       <div className="container">
         {/* Main Section Header */}
         <div className="brand-header-area reveal">
