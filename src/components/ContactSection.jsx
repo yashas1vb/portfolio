@@ -37,7 +37,7 @@ export default function ContactSection({ contact, personal, onViewResume }) {
           </button>
 
           <p className="contact-footer-copy">
-            &copy; {currentYear} {personal?.firstName} {personal?.lastName}. All rights reserved.
+            &copy; {currentYear} {personal?.firstName} {personal?.lastName}. All rights reserved. &nbsp;·&nbsp; Contains AI generated content.
           </p>
         </div>
       </div>
