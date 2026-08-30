@@ -221,7 +221,6 @@
   font-size: 0.78rem;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 860px) {
   .founder-top-row {
     grid-template-columns: 1fr;
@@ -247,10 +246,15 @@
   .founder-control-bar {
     opacity: 1;
   }
-}
 
-@media (max-width: 1200px) {
   .founder-copy-p {
     white-space: normal;
+    width: 100%;
+  }
+
+  .founder-bottom-copy {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 16px;
   }
 }

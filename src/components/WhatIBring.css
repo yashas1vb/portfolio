@@ -129,8 +129,8 @@
 @media (max-width: 540px) {
   .bring-grid {
     grid-template-columns: 1fr;
-    max-width: 320px;
+    max-width: 480px;
     margin: 0 auto;
-    gap: 36px;
+    gap: 32px;
   }
 }

@@ -98,11 +98,7 @@
   white-space: nowrap;
 }
 
-@media (max-width: 1200px) {
-  .voice-statement {
-    white-space: normal;
-  }
-}
+
 
 /* ================= BLOCK 2: MIDDLE MODEL POSE ================= */
 .voice-middle-block {
@@ -223,6 +219,17 @@
   .voice-hero-row {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+
+  .voice-stacked-title {
+    align-items: center;
+    text-align: center;
+  }
+
+  .voice-statement {
+    white-space: normal;
+    width: 100%;
+    text-align: center;
   }
 
   .voice-creators-grid {

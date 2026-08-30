@@ -185,7 +185,6 @@
   font-size: 0.78rem;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 960px) {
   .evolution-section {
     padding: 35px 0 50px;
@@ -207,12 +206,14 @@
 
   .evolution-bottom-summary {
     margin-top: 35px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 16px;
   }
-}
 
-@media (max-width: 1200px) {
   .evolution-subtitle,
   .evolution-summary-text {
     white-space: normal;
+    width: 100%;
   }
 }

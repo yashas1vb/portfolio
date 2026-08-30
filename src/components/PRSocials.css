@@ -1,5 +1,5 @@
 .pr-socials-section {
-  padding: 70px 0 120px;
+  padding: 50px 0 80px;
   background: #ffffff;
   position: relative;
   overflow: hidden;
@@ -175,7 +175,8 @@
 .pr-sticky-note {
   position: relative;
   padding: clamp(28px, 2.8vw, 38px) clamp(18px, 2vw, 26px) clamp(24px, 2.5vw, 34px);
-  height: 310px;
+  min-height: 310px;
+  height: auto;
   border-radius: 2px 2px 16px 2px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14), 0 3px 8px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -261,8 +262,7 @@
 /* 4th Sticky Note Core Thought */
 .sticky-core-thought {
   margin-top: 8px;
-  padding-top: 10px;
-  border-top: 2px dashed rgba(15, 23, 42, 0.35);
+  padding-top: 8px;
 }
 
 .core-thought-text {
@@ -330,11 +330,11 @@
 @media (max-width: 860px) {
   .pr-sticky-note {
     height: auto;
-    min-height: 220px;
+    min-height: 200px;
   }
 
   .pr-socials-section {
-    padding: 40px 0 70px;
+    padding: 36px 0 56px;
   }
 
   .pr-grid-row {
@@ -371,5 +371,17 @@
     grid-template-columns: 1fr;
     gap: 28px;
     margin-top: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pr-socials-section {
+    padding: 28px 0 44px;
+  }
+  .pr-apology-card {
+    max-width: 100%;
+  }
+  .pr-campaign-card {
+    max-width: 100%;
   }
 }

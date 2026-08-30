@@ -503,38 +503,82 @@
     text-align: center;
     margin-top: 4px;
   }
+  /* Make stage tall enough for big center cutout */
   .hero-collage-stage {
-    height: 400px;
+    height: 460px;
     margin-top: 15px;
   }
+  /* Side photos: smaller, pushed to the edges */
   .photo-card-left {
-    left: calc(50% - 175px);
-    width: 180px;
-    height: 250px;
-    top: 60px;
+    left: calc(50% - 200px);
+    width: 160px;
+    height: 220px;
+    top: 100px;
   }
   .photo-card-left .photo-card-inner {
     border-radius: 14px;
     transform: rotate(-8deg);
   }
   .photo-card-right {
-    left: calc(50% + 5px);
-    width: 180px;
-    height: 250px;
-    top: 65px;
+    left: calc(50% + 42px);
+    width: 160px;
+    height: 220px;
+    top: 105px;
   }
   .photo-card-right .photo-card-inner {
     border-radius: 14px;
     transform: rotate(8deg);
   }
+  /* Center cutout: tall, wide, clearly dominant */
   .cutout-center-wrapper {
-    width: 240px;
-    height: 440px;
-    top: -40px;
+    width: 300px;
+    height: 600px;
+    top: -150px;
   }
   .hero-bio-grid {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 0;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-first-name,
+  .hero-last-name {
+    font-size: clamp(2.2rem, 11vw, 3rem);
+  }
+  .hero-greeting {
+    font-size: 1rem;
+  }
+  .hero-subtag {
+    font-size: 1rem;
+  }
+  /* Stage tall enough so dominant center shows fully */
+  .hero-collage-stage {
+    height: 400px;
+  }
+  /* Side photos: small & pushed to edges to frame the center */
+  .photo-card-left {
+    left: calc(50% - 175px);
+    width: 130px;
+    height: 185px;
+    top: 90px;
+  }
+  .photo-card-right {
+    left: calc(50% + 47px);
+    width: 130px;
+    height: 185px;
+    top: 95px;
+  }
+  /* Center cutout: clearly the hero — 2x+ wider than side photos */
+  .cutout-center-wrapper {
+    width: 270px;
+    height: 560px;
+    top: -170px;
+  }
+  .hero-bio-col {
+    font-size: 1.1rem;
+    line-height: 1.65;
   }
 }

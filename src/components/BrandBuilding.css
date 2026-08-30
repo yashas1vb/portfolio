@@ -277,7 +277,6 @@
   font-weight: 700;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 960px) {
   .brand-section {
     padding: 20px 0 50px;
@@ -312,14 +311,33 @@
     margin: 0 auto 25px;
   }
 
+  .brand-summary-text {
+    white-space: normal;
+    width: 100%;
+  }
+
+  .brand-bottom-summary {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
   .brand-food-showcase-list {
-    gap: 45px;
+    gap: 36px;
     margin-top: 30px;
+    overflow: hidden;
+  }
+
+  /* Reset negative margins that cause row text to be covered on mobile */
+  .brand-food-row-panini,
+  .brand-food-row-pizza,
+  .brand-food-row-burger {
+    margin-bottom: 0;
   }
 
   .brand-food-row {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
     text-align: center;
   }
 
@@ -345,16 +363,21 @@
     justify-content: center;
   }
 
+  /* Cap food image height so they don't bleed into the next section */
   .panini-cutout,
   .burger-cutout {
     width: 90%;
     max-width: 440px;
+    max-height: 380px;
+    object-fit: contain;
     margin-right: 0;
   }
 
   .pizza-cutout {
     width: 90%;
     max-width: 440px;
+    max-height: 380px;
+    object-fit: contain;
     margin-left: 0;
   }
 }
@@ -378,8 +401,4 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .brand-summary-text {
-    white-space: normal;
-  }
-}
+
