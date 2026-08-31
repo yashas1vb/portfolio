@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Sparkles, Tv } from 'lucide-react';
+import { Sparkles, Tv, Image as ImageIcon } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './WhyWorthAShot.css';
 
 export default function WhyWorthAShot({ data, onZoomImage }) {
@@ -10,9 +11,9 @@ export default function WhyWorthAShot({ data, onZoomImage }) {
   };
 
   const {
-    title = "WHY I'M WORTH A SHOT!",
-    subtitle = "You've seen my work; now here's a bit about how I show up too.",
-    tvIcon = "/assets/worth-a-shot/vintage-tv.png",
+    title = "Why I'm Worth A Shot!",
+    subtitle = "Fast Learner. Deeply Curious. Driven by Culture & Creation.",
+    tvIcon = "/assets/worth-a-shot/tv-icon.webp",
     cards = [],
   } = data || {};
 
@@ -27,7 +28,7 @@ export default function WhyWorthAShot({ data, onZoomImage }) {
           {/* Header with Title and Vintage TV Icon */}
           <div className="worth-header-area">
             <div className="worth-title-row reveal">
-              <h2 className="worth-main-title">{title}</h2>
+              <AnimatedHeading as="h2" className="worth-main-title" text={title} />
 
               <div className="worth-tv-icon-card">
                 {!imgErrors['tv-icon'] && tvIcon ? (
@@ -35,6 +36,7 @@ export default function WhyWorthAShot({ data, onZoomImage }) {
                     src={tvIcon}
                     alt="Vintage TV"
                     className="worth-tv-img"
+                    decoding="async"
                     onError={() => handleError('tv-icon')}
                   />
                 ) : (
@@ -62,6 +64,8 @@ export default function WhyWorthAShot({ data, onZoomImage }) {
                       src={card.image}
                       alt={card.caption}
                       className="worth-card-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={() => handleError(card.id)}
                     />
                   ) : (
@@ -93,6 +97,8 @@ export default function WhyWorthAShot({ data, onZoomImage }) {
                       src={card.image}
                       alt={card.caption}
                       className="worth-card-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={() => handleError(card.id)}
                     />
                   ) : (

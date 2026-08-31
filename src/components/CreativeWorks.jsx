@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Play, Sparkles, Image as ImageIcon } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './CreativeWorks.css';
 
 export default function CreativeWorks({ data, onZoomImage }) {
@@ -22,7 +23,7 @@ export default function CreativeWorks({ data, onZoomImage }) {
       <div className="container">
         <div className="creative-container">
           {/* Main Title */}
-          <h2 className="creative-main-title reveal">{mainTitle}</h2>
+          <AnimatedHeading as="h2" className="creative-main-title" text={mainTitle} />
 
           {/* ================= 1. FLIPKART CONCEPTUAL CAMPAIGNS ================= */}
           <div className="flipkart-block">
@@ -36,6 +37,8 @@ export default function CreativeWorks({ data, onZoomImage }) {
                       src={poster.image}
                       alt={poster.title}
                       className="flipkart-poster-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={() => handleError(poster.id)}
                     />
                   ) : (
@@ -67,6 +70,8 @@ export default function CreativeWorks({ data, onZoomImage }) {
                       src={voyante.productImage}
                       alt="Voyante Smart Suitcase Product"
                       className="voyante-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={() => handleError('voyante-product')}
                     />
                   ) : (
@@ -88,6 +93,8 @@ export default function CreativeWorks({ data, onZoomImage }) {
                       src={voyante.billboardImage}
                       alt="Voyante Billboard Advertisement"
                       className="voyante-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={() => handleError('voyante-billboard')}
                     />
                   ) : (
@@ -121,6 +128,8 @@ export default function CreativeWorks({ data, onZoomImage }) {
                           src={scene.image}
                           alt={scene.title}
                           className="storyboard-scene-img"
+                          loading="lazy"
+                          decoding="async"
                           onError={() => handleError(scene.id)}
                         />
                       </div>

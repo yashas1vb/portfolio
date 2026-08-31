@@ -34,13 +34,13 @@ body {
   color: var(--text-blue);
   line-height: 1.5;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip hides overflow without breaking position: sticky */
   width: 100%;
 }
 
 #root {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip hides overflow without breaking position: sticky */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -59,17 +59,17 @@ a:hover {
   opacity: 0.85;
 }
 
-/* Full-width responsive container */
+/* Full-width responsive container with ultra-wide capping */
 .container {
   width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0 36px;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 0 clamp(14px, 3vw, 40px);
 }
 
 .section {
   width: 100%;
-  padding: 36px 0;
+  padding: clamp(24px, 4vw, 48px) 0;
   position: relative;
 }
 
@@ -130,6 +130,14 @@ a:hover {
 .delay-5 { transition-delay: 0.5s; }
 .delay-6 { transition-delay: 0.6s; }
 
+/* Sequential bullet point stagger delays */
+.delay-point-1 { transition-delay: 0.25s; }
+.delay-point-2 { transition-delay: 0.55s; }
+.delay-point-3 { transition-delay: 0.85s; }
+.delay-point-4 { transition-delay: 1.15s; }
+.delay-point-5 { transition-delay: 1.45s; }
+.delay-point-6 { transition-delay: 1.75s; }
+
 /* ================= ALTERNATING HORIZONTAL & VERTICAL SCROLL TRANSITIONS ================= */
 .scroll-slide-wrapper {
   width: 100%;
@@ -164,7 +172,7 @@ a:hover {
 /* Vertical slide from bottom */
 .scroll-slide-up {
   opacity: 0;
-  transform: translateY(70px);
+  transform: translateY(80px);
 }
 
 .scroll-slide-up.is-visible {
@@ -210,50 +218,86 @@ a:hover {
 .parallax-watermark {
   position: absolute;
   top: 15px;
-  right: -5%;
+  right: -2%;
   font-family: var(--font-display);
-  font-size: clamp(4rem, 12vw, 9.5rem);
+  font-size: clamp(3.5rem, 10vw, 8.5rem);
   font-weight: 900;
-  color: rgba(29, 78, 168, 0.04);
+  color: rgba(29, 78, 168, 0.035);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
   z-index: 0;
   will-change: transform;
   letter-spacing: -0.03em;
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1780px;
+    padding: 0 48px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 clamp(16px, 3vw, 32px);
+  }
+  .scroll-slide-right {
+    transform: translateX(70px);
+  }
+  .scroll-slide-left {
+    transform: translateX(-70px);
+  }
+  .scroll-slide-up {
+    transform: translateY(50px);
+  }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 18px;
+    padding: 0 16px;
   }
   .parallax-watermark {
     display: none;
   }
-  /* Tighten horizontal slide animations so they don't cause overflow on narrow screens */
   .scroll-slide-right {
-    transform: translateX(55px);
+    transform: translateX(35px);
   }
   .scroll-slide-left {
-    transform: translateX(-55px);
+    transform: translateX(-35px);
   }
   .scroll-slide-up {
-    transform: translateY(40px);
+    transform: translateY(30px);
+  }
+  .reveal-left {
+    transform: translateX(-20px);
+  }
+  .reveal-right {
+    transform: translateX(20px);
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 14px;
+    padding: 0 12px;
   }
   .scroll-slide-right {
-    transform: translateX(30px);
+    transform: translateX(20px);
   }
   .scroll-slide-left {
-    transform: translateX(-30px);
+    transform: translateX(-20px);
   }
   .scroll-slide-up {
-    transform: translateY(24px);
+    transform: translateY(20px);
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 10px;
   }
 }
 

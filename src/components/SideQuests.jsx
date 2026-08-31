@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Award } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './SideQuests.css';
 
 export default function SideQuests({ data }) {
@@ -15,7 +16,8 @@ export default function SideQuests({ data }) {
     <section id="side-quests" className="quests-section">
       <div className="container">
         <div className="quests-container">
-          <h2 className="quests-title reveal">{title}</h2>
+          {/* Main Title */}
+          <AnimatedHeading as="h2" className="quests-title" text={title} />
 
           <div className="quests-stack">
             {quests.map((quest, idx) => (
@@ -25,6 +27,8 @@ export default function SideQuests({ data }) {
                     src={quest.image}
                     alt={quest.title}
                     className="quest-img"
+                    loading="lazy"
+                    decoding="async"
                     onError={() => handleError(quest.id)}
                   />
                 ) : (

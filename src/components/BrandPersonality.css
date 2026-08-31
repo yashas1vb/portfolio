@@ -117,12 +117,31 @@
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   .personality-card {
-    height: 280px;
+    height: clamp(200px, 45vw, 280px);
   }
 
   .personality-overlay-pill {
     padding: 10px 18px;
     max-width: 92%;
     width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .personality-card {
+    height: 220px;
+  }
+  .personality-pill-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 360px) {
+  .personality-card {
+    height: 190px;
+  }
+  .personality-pill-text {
+    font-size: 0.85rem;
   }
 }

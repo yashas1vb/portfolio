@@ -27,7 +27,7 @@ export function useParallax() {
               const leftPhoto = heroSection.querySelector('.photo-card-left');
               const rightPhoto = heroSection.querySelector('.photo-card-right');
               const centerCutout = heroSection.querySelector('.cutout-center-wrapper');
-              const paperPlane = heroSection.querySelector('.hero-paper-plane-wrapper');
+              const paperPlanes = heroSection.querySelectorAll('.hero-paper-plane-wrapper');
 
               if (leftPhoto) {
                 leftPhoto.style.setProperty('--parallax-y', `${heroProgress * 45}px`);
@@ -38,8 +38,11 @@ export function useParallax() {
               if (centerCutout) {
                 centerCutout.style.setProperty('--parallax-y', `${-heroProgress * 35}px`);
               }
-              if (paperPlane) {
-                paperPlane.style.setProperty('--plane-parallax-y', `${-heroProgress * 70}px`);
+              if (paperPlanes.length > 0) {
+                paperPlanes.forEach((plane, i) => {
+                  const factor = 60 + i * 25;
+                  plane.style.setProperty('--plane-parallax-y', `${-heroProgress * factor}px`);
+                });
               }
             }
           }

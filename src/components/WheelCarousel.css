@@ -1,0 +1,328 @@
+/* ================================================================
+   ARC CAROUSEL — curved half-wheel filmstrip
+   v3: bigger tiles, tighter packing, more pronounced curve
+   ================================================================ */
+
+/*
+  Arc geometry (parabolic approximation of a circle, R ≈ 1450px):
+    y = x² / (2 × 1450) = x² / 2900
+
+    x=0   → y=0   (apex, center)
+    x=300 → y=31
+    x=500 → y=86
+    x=680 → y=159
+    x=800 → y=221  (off-screen entry/exit point)
+
+  More curve = smaller R. Previous R was ~3200px (nearly flat).
+  New R = 1450px — about 2× more dramatic droop.
+*/
+
+/* ──────────────────────────────────────────
+   ARC ANCHOR POINT
+   Single pixel at the arc apex, centered in
+   the upper-middle of the collage stage.
+────────────────────────────────────────── */
+.arc-outer {
+  position: absolute;
+  top: 42%;           /* 42% of 640px = 269px — sits in the mid body of the hero */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  /* Entrance fade */
+  opacity: 0;
+  animation: arcFadeIn 0.6s ease 0.3s forwards;
+}
+
+@keyframes arcFadeIn {
+  to { opacity: 1; }
+}
+
+/* Hover → pause all tiles */
+.arc-outer:hover .arc-tile {
+  animation-play-state: paused;
+}
+
+/* ──────────────────────────────────────────
+   REDUCED-MOTION FALLBACK
+   Static snapshot of the arc spread.
+────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .arc-outer { animation: none !important; opacity: 1; }
+  .arc-tile  { animation: none !important; }
+
+  .arc-tile:nth-child(1) { transform: translateX(-640px) translateY(142px) scale(0.77); opacity: 0.68; }
+  .arc-tile:nth-child(2) { transform: translateX(-360px) translateY(45px)  scale(0.88); opacity: 0.82; }
+  .arc-tile:nth-child(3) { transform: translateX(-100px) translateY(3px)   scale(0.98); opacity: 0.93; }
+  .arc-tile:nth-child(4) { transform: translateX(160px)  translateY(9px)   scale(0.96); opacity: 0.91; }
+  .arc-tile:nth-child(5) { transform: translateX(420px)  translateY(61px)  scale(0.86); opacity: 0.79; }
+  .arc-tile:nth-child(6) { transform: translateX(680px)  translateY(159px) scale(0.74); opacity: 0.60; }
+}
+
+/* ──────────────────────────────────────────
+   TILE
+   Larger cards, centred on the arc anchor.
+────────────────────────────────────────── */
+.arc-tile {
+  position: absolute;
+
+  /* ↑ Larger than before (was 210×300) */
+  width: 280px;
+  height: 385px;
+
+  left: -140px;   /* half tile width  */
+  top:  -192px;   /* half tile height */
+
+  border-radius: 18px;
+  overflow: hidden;
+
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.18),
+    0 5px  14px rgba(0, 0, 0, 0.10);
+
+  /* Background texture treatment — muted but not invisible */
+  filter: saturate(0.68) brightness(0.86);
+
+  animation: arcMove var(--arc-speed, 26s) linear infinite;
+  will-change: transform, opacity;
+}
+
+/* ──────────────────────────────────────────
+   THE CURVED ARC KEYFRAME
+
+   Path: right (off-screen) ──→ apex (centre) ──→ left (off-screen)
+   Curve: parabolic arc, R ≈ 1450px
+   y(x) = x² / 2900  (all y values are positive = downward from apex)
+
+   Scale mirrors the arc: largest at centre, smallest at edges.
+   Opacity fades in/out only in the last ~8% of travel at each end
+   (x > 680px off-screen). Inside that, stays fully "on".
+────────────────────────────────────────── */
+@keyframes arcMove {
+  /* ── entry: off-screen right ── */
+  0% {
+    transform: translateX(810px)  translateY(298px) rotateZ(36deg)  scale(0.71);
+    opacity: 0;
+  }
+  4% {
+    transform: translateX(740px)  translateY(249px) rotateZ(34deg)  scale(0.73);
+    opacity: 0.42;
+  }
+
+  /* ── right visible region ── */
+  14% {
+    transform: translateX(590px)  translateY(158px) rotateZ(28deg)  scale(0.79);
+    opacity: 0.72;
+  }
+  28% {
+    transform: translateX(390px)  translateY(69px)  rotateZ(20deg)  scale(0.87);
+    opacity: 0.86;
+  }
+  38% {
+    transform: translateX(230px)  translateY(24px)  rotateZ(12deg)  scale(0.94);
+    opacity: 0.93;
+  }
+
+  /* ── apex: fully upright ── */
+  50% {
+    transform: translateX(0px)    translateY(0px)   rotateZ(0deg)   scale(1.00);
+    opacity: 0.97;
+  }
+
+  /* ── left visible region ── */
+  62% {
+    transform: translateX(-230px) translateY(24px)  rotateZ(-12deg) scale(0.94);
+    opacity: 0.93;
+  }
+  72% {
+    transform: translateX(-390px) translateY(69px)  rotateZ(-20deg) scale(0.87);
+    opacity: 0.86;
+  }
+  86% {
+    transform: translateX(-590px) translateY(158px) rotateZ(-28deg) scale(0.79);
+    opacity: 0.72;
+  }
+
+  /* ── exit: off-screen left ── */
+  96% {
+    transform: translateX(-740px) translateY(249px) rotateZ(-34deg) scale(0.73);
+    opacity: 0.42;
+  }
+  100% {
+    transform: translateX(-810px) translateY(298px) rotateZ(-36deg) scale(0.71);
+    opacity: 0;
+  }
+}
+
+/* ──────────────────────────────────────────
+   IMAGE FILL
+────────────────────────────────────────── */
+.arc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* ──────────────────────────────────────────
+   MOBILE & TABLET RESPONSIVE ARC
+   Scaled down proportionally so 6 images fit and flow seamlessly
+   along the curved arc on small screens without disappearing off-screen.
+────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .arc-outer { top: 38%; }
+
+  .arc-tile {
+    width: 120px;
+    height: 165px;
+    left: -60px;
+    top:  -82px;
+    border-radius: 12px;
+    animation-name: arcMoveMobile;
+  }
+}
+
+@media (max-width: 480px) {
+  .arc-outer { top: 36%; }
+
+  .arc-tile {
+    width: 100px;
+    height: 138px;
+    left: -50px;
+    top: -69px;
+    border-radius: 10px;
+    animation-name: arcMoveMobileSmall;
+  }
+}
+
+@media (max-width: 360px) {
+  .arc-outer { top: 35%; }
+
+  .arc-tile {
+    width: 86px;
+    height: 118px;
+    left: -43px;
+    top: -59px;
+    border-radius: 8px;
+    animation-name: arcMoveMobileXSmall;
+  }
+}
+
+/* Arc motion tailored for standard mobile (360px - 768px) */
+@keyframes arcMoveMobile {
+  0% {
+    transform: translateX(340px) translateY(115px) rotateZ(28deg) scale(0.72);
+    opacity: 0;
+  }
+  4% {
+    transform: translateX(300px) translateY(92px) rotateZ(24deg) scale(0.76);
+    opacity: 0.5;
+  }
+  16% {
+    transform: translateX(230px) translateY(55px) rotateZ(18deg) scale(0.84);
+    opacity: 0.8;
+  }
+  32% {
+    transform: translateX(130px) translateY(18px) rotateZ(10deg) scale(0.92);
+    opacity: 0.94;
+  }
+  50% {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg) scale(1.00);
+    opacity: 0.98;
+  }
+  68% {
+    transform: translateX(-130px) translateY(18px) rotateZ(-10deg) scale(0.92);
+    opacity: 0.94;
+  }
+  84% {
+    transform: translateX(-230px) translateY(55px) rotateZ(-18deg) scale(0.84);
+    opacity: 0.8;
+  }
+  96% {
+    transform: translateX(-300px) translateY(92px) rotateZ(-24deg) scale(0.76);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-340px) translateY(115px) rotateZ(-28deg) scale(0.72);
+    opacity: 0;
+  }
+}
+
+/* Arc motion tailored for small mobile (≤480px) */
+@keyframes arcMoveMobileSmall {
+  0% {
+    transform: translateX(220px) translateY(85px) rotateZ(24deg) scale(0.72);
+    opacity: 0;
+  }
+  5% {
+    transform: translateX(190px) translateY(66px) rotateZ(20deg) scale(0.76);
+    opacity: 0.55;
+  }
+  20% {
+    transform: translateX(140px) translateY(38px) rotateZ(14deg) scale(0.84);
+    opacity: 0.85;
+  }
+  35% {
+    transform: translateX(75px) translateY(10px) rotateZ(7deg) scale(0.93);
+    opacity: 0.96;
+  }
+  50% {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg) scale(1.00);
+    opacity: 0.98;
+  }
+  65% {
+    transform: translateX(-75px) translateY(10px) rotateZ(-7deg) scale(0.93);
+    opacity: 0.96;
+  }
+  80% {
+    transform: translateX(-140px) translateY(38px) rotateZ(-14deg) scale(0.84);
+    opacity: 0.85;
+  }
+  95% {
+    transform: translateX(-190px) translateY(66px) rotateZ(-20deg) scale(0.76);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateX(-220px) translateY(85px) rotateZ(-24deg) scale(0.72);
+    opacity: 0;
+  }
+}
+
+/* Arc motion tailored for extra small mobile (≤360px) */
+@keyframes arcMoveMobileXSmall {
+  0% {
+    transform: translateX(180px) translateY(68px) rotateZ(22deg) scale(0.72);
+    opacity: 0;
+  }
+  6% {
+    transform: translateX(150px) translateY(50px) rotateZ(18deg) scale(0.78);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateX(100px) translateY(24px) rotateZ(10deg) scale(0.88);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg) scale(1.00);
+    opacity: 0.98;
+  }
+  75% {
+    transform: translateX(-100px) translateY(24px) rotateZ(-10deg) scale(0.88);
+    opacity: 0.9;
+  }
+  94% {
+    transform: translateX(-150px) translateY(50px) rotateZ(-18deg) scale(0.78);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(-180px) translateY(68px) rotateZ(-22deg) scale(0.72);
+    opacity: 0;
+  }
+}

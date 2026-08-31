@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './WhatIBring.css';
 
 export default function WhatIBring({ data }) {
@@ -16,7 +17,8 @@ export default function WhatIBring({ data }) {
   return (
     <section id="what-i-bring" className="bring-section">
       <div className="container">
-        <h2 className="bring-title reveal">{title}</h2>
+        {/* Main Title with Typing Animation & Text Shadow/Outline */}
+        <AnimatedHeading as="h2" className="bring-title" text={title} />
 
         <div className="bring-grid">
           {pillars.map((pillar, idx) => {
@@ -39,6 +41,8 @@ export default function WhatIBring({ data }) {
                       src={pillar.image}
                       alt={pillar.label}
                       className="bring-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={() => handleError(pillar.id)}
                     />
                   ) : (

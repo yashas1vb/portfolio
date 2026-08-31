@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Store } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './BrandPersonality.css';
 
 export default function BrandPersonality({ data }) {
@@ -17,7 +18,8 @@ export default function BrandPersonality({ data }) {
   return (
     <section id="personality" className="personality-section">
       <div className="container">
-        <h2 className="personality-title reveal">{title}</h2>
+        {/* Main Title */}
+        <AnimatedHeading as="h2" className="personality-title" text={title} />
 
         <div className="personality-stack">
           {venues.map((venue, index) => (
@@ -27,6 +29,8 @@ export default function BrandPersonality({ data }) {
                   src={venue.image}
                   alt={venue.name}
                   className="personality-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={() => handleError(venue.id)}
                 />
               ) : (

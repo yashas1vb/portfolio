@@ -1,5 +1,6 @@
 import { Mail, ArrowUp, FileText } from 'lucide-react';
 import { LinkedinIcon } from './Icons';
+import AnimatedHeading from './AnimatedHeading';
 import './ContactSection.css';
 
 export default function ContactSection({ contact, personal, onViewResume }) {
@@ -15,7 +16,8 @@ export default function ContactSection({ contact, personal, onViewResume }) {
     <footer id="contact" className="contact-section-final">
       <div className="container">
         <div className="contact-final-container">
-          <h2 className="contact-final-title reveal">LET'S CONNECT!</h2>
+          {/* Final Large Title */}
+          <AnimatedHeading as="h2" className="contact-final-title" text="LET'S CONNECT!" />
 
           <div className="contact-final-actions reveal delay-1">
             <a href={email} className="contact-mail-btn">

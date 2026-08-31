@@ -1,24 +1,25 @@
 import { useEffect } from 'react';
 
 /**
- * Custom hook to initialize smooth on-scroll reveal animations
- * Uses IntersectionObserver to detect when elements enter the viewport.
+ * Custom hook to initialize smooth on-scroll reveal animations.
+ * Supports bidirectional triggers (re-reveals when scrolling back up and down).
  */
-export function useScrollReveal() {
+export default function useScrollReveal() {
   useEffect(() => {
-    const observerCallback = (entries, observer) => {
+    const observerCallback = (entries) => {
       entries.forEach((entry) => {
+        const isHero = entry.target.closest('#hero');
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          // Once animated, we don't need to observe it again
-          observer.unobserve(entry.target);
+        } else if (!isHero) {
+          entry.target.classList.remove('is-visible');
         }
       });
     };
 
     const observerOptions = {
       root: null,
-      rootMargin: '0px 0px -40px 0px',
+      rootMargin: '0px 0px -30px 0px',
       threshold: 0.08,
     };
 
@@ -31,10 +32,8 @@ export function useScrollReveal() {
       elements.forEach((el) => observer.observe(el));
     };
 
-    // Initial observation
     observeElements();
 
-    // Re-run observer when DOM updates
     const mutationObserver = new MutationObserver(() => {
       observeElements();
     });
@@ -47,3 +46,5 @@ export function useScrollReveal() {
     };
   }, []);
 }
+
+export { useScrollReveal };

@@ -1,0 +1,212 @@
+/* ==========================================================================
+   ANIMATED HEADING STYLES (Text Shadows, Typographic Outlines & Typing Cursor)
+   ========================================================================== */
+
+.animated-main-heading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 100%;
+  
+  /* Text Shadow & Outline Definition */
+  color: var(--text-blue, #1d4ea8);
+  -webkit-text-stroke: 1px rgba(29, 78, 168, 0.22);
+  text-shadow: 
+    0 2px 4px rgba(29, 78, 168, 0.15),
+    0 8px 24px rgba(29, 78, 168, 0.18),
+    0 16px 40px rgba(29, 78, 168, 0.08);
+  
+  transition: 
+    text-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-text-stroke 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: text-shadow, transform;
+}
+
+.animated-main-heading:hover {
+  -webkit-text-stroke: 1.5px rgba(29, 78, 168, 0.45);
+  text-shadow: 
+    0 3px 6px rgba(29, 78, 168, 0.25),
+    0 12px 32px rgba(29, 78, 168, 0.28),
+    0 20px 50px rgba(29, 78, 168, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Container for ghost vs visible text */
+.heading-text-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+/* Invisible placeholder prevents layout jumps / shifts */
+.heading-ghost-placeholder {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  height: auto;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Visible typing characters overlay */
+.heading-visible-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Centered heading visible content */
+.notice-title .heading-visible-content,
+.bring-title .heading-visible-content,
+.brand-main-title .heading-visible-content,
+.personality-title .heading-visible-content,
+.evolution-title .heading-visible-content,
+.pr-main-title .heading-visible-content,
+.voice-main-title .heading-visible-content,
+.creative-main-title .heading-visible-content,
+.quests-title .heading-visible-content,
+.contact-final-title .heading-visible-content {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Stacked title line */
+.animated-stacked-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.animated-stacked-line {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  
+  color: var(--text-blue, #1d4ea8);
+  -webkit-text-stroke: 1px rgba(29, 78, 168, 0.22);
+  text-shadow: 
+    0 2px 4px rgba(29, 78, 168, 0.15),
+    0 8px 24px rgba(29, 78, 168, 0.18),
+    0 16px 40px rgba(29, 78, 168, 0.08);
+  
+  transition: 
+    text-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-text-stroke 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated-stacked-line:hover {
+  -webkit-text-stroke: 1.5px rgba(29, 78, 168, 0.45);
+  text-shadow: 
+    0 3px 6px rgba(29, 78, 168, 0.25),
+    0 12px 32px rgba(29, 78, 168, 0.28),
+    0 20px 50px rgba(29, 78, 168, 0.15);
+  transform: translateX(4px);
+}
+
+/* Sleek Glowing Typing Cursor */
+.heading-typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.82em;
+  margin-left: 4px;
+  background-color: var(--text-blue, #1d4ea8);
+  box-shadow: 0 0 10px rgba(29, 78, 168, 0.6);
+  border-radius: 2px;
+  vertical-align: middle;
+  animation: cursorBlink 0.75s ease-in-out infinite alternate;
+}
+
+@keyframes cursorBlink {
+  0%   { opacity: 1; transform: scaleY(1); }
+  50%  { opacity: 0.15; transform: scaleY(0.9); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ==========================================================================
+   SECTION-SPECIFIC OVERRIDES & OUTLINE / SHADOW ENHANCEMENTS
+   ========================================================================== */
+
+/* 1. Contact Section Dark/Blue Background */
+.contact-final-title.animated-main-heading {
+  color: #ffffff !important;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4) !important;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(255, 255, 255, 0.45),
+    0 0 40px rgba(255, 255, 255, 0.25) !important;
+}
+
+.contact-final-title.animated-main-heading:hover {
+  -webkit-text-stroke: 1.5px #ffffff !important;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.3),
+    0 0 28px rgba(255, 255, 255, 0.75),
+    0 0 60px rgba(255, 255, 255, 0.45) !important;
+}
+
+.contact-final-title .heading-typing-cursor {
+  background-color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+}
+
+/* 2. Stacked Title Specific Typography */
+.stories-stacked-title .animated-stacked-line,
+.creator-hunting-stacked-title .animated-stacked-line,
+.founder-stacked-title .animated-stacked-line {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.stories-stacked-title .animated-stacked-line {
+  font-size: clamp(2.0rem, 5.2vw, 4.6rem);
+  line-height: 1.02;
+}
+
+.creator-hunting-stacked-title .animated-stacked-line {
+  font-size: clamp(2.0rem, 5.2vw, 4.6rem);
+  line-height: 1.02;
+}
+
+.founder-stacked-title .animated-stacked-line {
+  font-size: clamp(1.8rem, 4.2vw, 3.8rem);
+  line-height: 1.02;
+}
+
+@media (max-width: 480px) {
+  .animated-main-heading {
+    text-shadow: 
+      0 2px 4px rgba(29, 78, 168, 0.12),
+      0 6px 18px rgba(29, 78, 168, 0.15);
+    -webkit-text-stroke: 0.8px rgba(29, 78, 168, 0.2);
+  }
+  .stories-stacked-title .animated-stacked-line,
+  .creator-hunting-stacked-title .animated-stacked-line {
+    font-size: clamp(1.85rem, 8vw, 2.6rem);
+  }
+  .founder-stacked-title .animated-stacked-line {
+    font-size: clamp(1.65rem, 7vw, 2.2rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .stories-stacked-title .animated-stacked-line,
+  .creator-hunting-stacked-title .animated-stacked-line {
+    font-size: clamp(1.6rem, 7.5vw, 2.0rem);
+  }
+  .founder-stacked-title .animated-stacked-line {
+    font-size: clamp(1.45rem, 6.5vw, 1.85rem);
+  }
+}

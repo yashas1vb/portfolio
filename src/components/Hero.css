@@ -1,12 +1,18 @@
+/* ================================================================
+   HERO SECTION — 3D Wheel Carousel edition
+   ================================================================ */
+
 .hero-section {
   padding: 20px 0 45px;
   background: #ffffff;
   position: relative;
-  overflow: hidden;
+  overflow: hidden;   /* clips wheel edges at page level */
   width: 100%;
 }
 
-/* ================= MAIN HERO STAGE ================= */
+/* ──────────────────────────────────────────
+   MAIN STAGE
+────────────────────────────────────────── */
 .hero-stage {
   position: relative;
   width: 100%;
@@ -15,19 +21,20 @@
   padding: 0 24px;
 }
 
-/* Header Row: Supriya  [Cutout Gap]  Naregal */
+/* ──────────────────────────────────────────
+   NAME ROW  (Supriya | gap | Naregal)
+────────────────────────────────────────── */
 .hero-top-row {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 10;
   padding-top: 10px;
   gap: 0;
 }
 
-/* Left: Greeting + Supriya */
 .hero-left-header {
   display: flex;
   flex-direction: column;
@@ -56,14 +63,12 @@
   white-space: nowrap;
 }
 
-/* Center Spacer (Gap for the standing cutout head) - tighter to bring right text closer */
 .hero-center-spacer {
   width: clamp(160px, 18vw, 280px);
   flex-shrink: 0;
   height: 10px;
 }
 
-/* Right: Naregal + Tagline - shifted right by 28px */
 .hero-right-header {
   display: flex;
   flex-direction: column;
@@ -108,7 +113,13 @@
   letter-spacing: -0.01em;
 }
 
-/* ================= 3-PHOTO COLLAGE STAGE ================= */
+/* ──────────────────────────────────────────
+   COLLAGE STAGE
+   CRITICAL: NO overflow:hidden here.
+   The portrait cutout is top: -520px and 1120px tall —
+   it MUST overflow above/below freely.
+   All clipping happens at .hero-section level.
+────────────────────────────────────────── */
 .hero-collage-stage {
   position: relative;
   width: 100%;
@@ -116,99 +127,119 @@
   margin-top: -15px;
   display: flex;
   justify-content: center;
+  /* overflow: visible (default) — intentionally NOT hidden */
 }
 
-/* ================= MINIMALIST 3D PAPER PLANE ANIMATION ================= */
-.hero-paper-plane-wrapper {
+/* ──────────────────────────────────────────
+   WHEEL VISIBILITY TOGGLES
+────────────────────────────────────────── */
+.wheel-desktop-only { display: block; }
+.wheel-mobile-only  { display: none;  }
+
+/* ──────────────────────────────────────────
+   PAPER PLANES (3 planes — stay visible, never fade out)
+────────────────────────────────────────── */
+.hero-paper-planes-container {
   position: absolute;
-  left: calc(50% + 75px);
-  top: 30px;
-  width: 38px;
-  height: 32px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 15;
+}
+
+.hero-paper-plane-wrapper {
+  position: absolute;
+  pointer-events: none;
   opacity: 0;
-  animation: flyPaperPlane 1.5s cubic-bezier(0.25, 1, 0.4, 1) 1.05s 1 forwards;
+  transform: translateY(var(--plane-parallax-y, 0px));
 }
 
 .hero-paper-plane-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 3px 6px rgba(29, 78, 168, 0.25));
+  filter: drop-shadow(0 4px 10px rgba(29, 78, 168, 0.35));
 }
 
-@keyframes flyPaperPlane {
-  0% {
-    opacity: 0;
-    transform: translate(-25px, 40px) rotate(-10deg) scale(0.75);
-  }
-  18% {
-    opacity: 0.95;
-    transform: translate(0px, 20px) rotate(6deg) scale(0.92);
-  }
-  55% {
-    opacity: 1;
-    transform: translate(35px, 0px) rotate(16deg) scale(1);
-  }
-  80% {
-    opacity: 0.85;
-    transform: translate(65px, -12px) rotate(22deg) scale(0.95);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(90px, -24px) rotate(26deg) scale(0.85);
-  }
+/* Plane 1: Main right plane */
+.hero-plane-1 {
+  left: calc(50% + 75px);
+  top: 25px;
+  width: 38px;
+  height: 32px;
+  animation: 
+    flyPaperPlane1 1.5s cubic-bezier(0.25, 1, 0.4, 1) 0.95s 1 forwards,
+    idlePaperPlane1 4s ease-in-out 2.45s infinite alternate;
 }
 
-/* ================= ENLARGED SIDE PHOTOS & CUTOUT WITH POP/BLOOM ================= */
-
-/* Left Photo Container: Positioned left */
-.photo-card-left {
-  position: absolute;
-  left: calc(50% - 460px);
-  top: 100px;
-  width: 375px;
-  height: 505px;
-  transform: translateY(var(--parallax-y, 0px));
-  z-index: 2;
-  pointer-events: auto;
-  outline: none;
-  animation: bloomPopLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
-  will-change: transform, opacity, filter;
-  transition: z-index 0.3s ease;
+/* Plane 2: Top-left plane soaring up */
+.hero-plane-2 {
+  left: calc(50% - 240px);
+  top: 50px;
+  width: 28px;
+  height: 24px;
+  animation: 
+    flyPaperPlane2 1.6s cubic-bezier(0.25, 1, 0.4, 1) 1.25s 1 forwards,
+    idlePaperPlane2 4.5s ease-in-out 2.85s infinite alternate;
 }
 
-.photo-card-left .photo-card-inner {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-10.5deg);
-  border-radius: 20px;
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.16), 0 8px 20px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  background: #f8fafc;
-  cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
-  will-change: transform, box-shadow, filter;
+/* Plane 3: Top-right mini plane */
+.hero-plane-3 {
+  left: calc(50% + 220px);
+  top: -15px;
+  width: 24px;
+  height: 20px;
+  animation: 
+    flyPaperPlane3 1.5s cubic-bezier(0.25, 1, 0.4, 1) 1.45s 1 forwards,
+    idlePaperPlane3 3.8s ease-in-out 2.95s infinite alternate;
 }
 
-.photo-card-left:hover,
-.photo-card-left:focus-visible {
-  z-index: 20;
+@keyframes flyPaperPlane1 {
+  0%   { opacity: 0; transform: translate(-25px, 40px) rotate(-10deg) scale(0.75); }
+  25%  { opacity: 0.95; transform: translate(0px, 18px) rotate(6deg) scale(0.92); }
+  60%  { opacity: 1; transform: translate(35px, 0px) rotate(16deg) scale(1); }
+  85%  { opacity: 1; transform: translate(55px, -8px) rotate(20deg) scale(1); }
+  100% { opacity: 1; transform: translate(65px, -10px) rotate(18deg) scale(1); }
 }
 
-.photo-card-left:hover .photo-card-inner,
-.photo-card-left:focus-visible .photo-card-inner {
-  transform: translateY(-12px) scale(1.06) rotate(-6.5deg);
-  box-shadow: 0 34px 70px rgba(29, 78, 168, 0.26), 0 14px 30px rgba(0, 0, 0, 0.14);
-  filter: brightness(1.03);
+@keyframes idlePaperPlane1 {
+  0%   { transform: translate(65px, -10px) rotate(18deg) translateY(0px); }
+  50%  { transform: translate(65px, -10px) rotate(22deg) translateY(-8px) scale(1.04); }
+  100% { transform: translate(65px, -10px) rotate(14deg) translateY(4px) scale(0.97); }
 }
 
-.photo-card-left:hover .card-img,
-.photo-card-left:focus-visible .card-img {
-  transform: scale(1.04);
+@keyframes flyPaperPlane2 {
+  0%   { opacity: 0; transform: translate(-30px, 35px) rotate(-25deg) scale(0.7); }
+  30%  { opacity: 0.95; transform: translate(-10px, 15px) rotate(-8deg) scale(0.9); }
+  65%  { opacity: 1; transform: translate(15px, 0px) rotate(4deg) scale(1); }
+  100% { opacity: 1; transform: translate(30px, -6px) rotate(8deg) scale(1); }
 }
 
-/* Center Cutout Container: Positioned High in the Center Gap, Rising above both cards */
+@keyframes idlePaperPlane2 {
+  0%   { transform: translate(30px, -6px) rotate(8deg) translateY(0px); }
+  50%  { transform: translate(30px, -6px) rotate(12deg) translateY(-6px) scale(1.03); }
+  100% { transform: translate(30px, -6px) rotate(4deg) translateY(5px) scale(0.98); }
+}
+
+@keyframes flyPaperPlane3 {
+  0%   { opacity: 0; transform: translate(-20px, 30px) rotate(5deg) scale(0.65); }
+  35%  { opacity: 0.95; transform: translate(0px, 12px) rotate(18deg) scale(0.88); }
+  70%  { opacity: 1; transform: translate(20px, -4px) rotate(26deg) scale(1); }
+  100% { opacity: 1; transform: translate(32px, -10px) rotate(24deg) scale(1); }
+}
+
+@keyframes idlePaperPlane3 {
+  0%   { transform: translate(32px, -10px) rotate(24deg) translateY(0px); }
+  50%  { transform: translate(32px, -10px) rotate(28deg) translateY(-7px) scale(1.05); }
+  100% { transform: translate(32px, -10px) rotate(20deg) translateY(3px) scale(0.96); }
+}
+
+/* ──────────────────────────────────────────
+   CENTER PORTRAIT — always on top of the wheel
+   Same position as original design.
+   z-index 10 keeps it above the wheel (z-index 2).
+────────────────────────────────────────── */
 .cutout-center-wrapper {
   position: absolute;
   left: 50%;
@@ -216,11 +247,11 @@
   top: -520px;
   width: 610px;
   height: 1120px;
-  z-index: 5;
+  z-index: 10;
   pointer-events: auto;
   outline: none;
-  animation: bloomPopCenter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
-  will-change: transform, opacity, filter;
+  animation: portraitEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  will-change: transform, opacity;
   transition: z-index 0.3s ease;
 }
 
@@ -236,9 +267,7 @@
 }
 
 .cutout-center-wrapper:hover,
-.cutout-center-wrapper:focus-visible {
-  z-index: 25;
-}
+.cutout-center-wrapper:focus-visible { z-index: 25; }
 
 .cutout-center-wrapper:hover .center-cutout-inner,
 .cutout-center-wrapper:focus-visible .center-cutout-inner {
@@ -247,62 +276,10 @@
 
 .cutout-center-wrapper:hover .center-cutout-img,
 .cutout-center-wrapper:focus-visible .center-cutout-img {
-  filter: drop-shadow(0 30px 58px rgba(29, 78, 168, 0.35)) drop-shadow(0 10px 22px rgba(0, 0, 0, 0.18)) brightness(1.04);
+  filter: drop-shadow(0 30px 58px rgba(29, 78, 168, 0.35))
+          drop-shadow(0 10px 22px rgba(0, 0, 0, 0.2))
+          brightness(1.04);
   transform: scale(1.02);
-}
-
-/* Right Photo Container: Positioned right */
-.photo-card-right {
-  position: absolute;
-  left: calc(50% + 80px);
-  top: 105px;
-  width: 375px;
-  height: 505px;
-  transform: translateY(var(--parallax-y, 0px));
-  z-index: 3;
-  pointer-events: auto;
-  outline: none;
-  animation: bloomPopRight 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
-  will-change: transform, opacity, filter;
-  transition: z-index 0.3s ease;
-}
-
-.photo-card-right .photo-card-inner {
-  width: 100%;
-  height: 100%;
-  transform: rotate(11deg);
-  border-radius: 20px;
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.16), 0 8px 20px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  background: #f8fafc;
-  cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
-  will-change: transform, box-shadow, filter;
-}
-
-.photo-card-right:hover,
-.photo-card-right:focus-visible {
-  z-index: 20;
-}
-
-.photo-card-right:hover .photo-card-inner,
-.photo-card-right:focus-visible .photo-card-inner {
-  transform: translateY(-12px) scale(1.06) rotate(7.5deg);
-  box-shadow: 0 34px 70px rgba(29, 78, 168, 0.26), 0 14px 30px rgba(0, 0, 0, 0.14);
-  filter: brightness(1.03);
-}
-
-.photo-card-right:hover .card-img,
-.photo-card-right:focus-visible .card-img {
-  transform: scale(1.04);
-}
-
-.card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .center-cutout-img {
@@ -310,81 +287,34 @@
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.18));
-  transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Triple shadow so portrait clearly lifts above the wheel behind it */
+  filter: drop-shadow(0 22px 52px rgba(0, 0, 0, 0.30))
+          drop-shadow(0 6px 18px rgba(29, 78, 168, 0.16))
+          drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+  transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ================= POP & BLOOM ENTRANCE KEYFRAMES ================= */
-@keyframes bloomPopCenter {
+/* Portrait entrance: opacity + scale 0.95→1 + translateY 24→0 */
+@keyframes portraitEntrance {
   0% {
     opacity: 0;
-    transform: translateX(-50%) translateY(calc(var(--parallax-y, 0px) + 65px)) scale(0.82);
-    filter: brightness(1.35) blur(12px) drop-shadow(0 0 30px rgba(29, 78, 168, 0.5));
+    transform: translateX(-50%) translateY(calc(var(--parallax-y, 0px) + 24px)) scale(0.95);
+    filter: blur(4px);
   }
   60% {
     opacity: 0.96;
-    transform: translateX(-50%) translateY(calc(var(--parallax-y, 0px) - 6px)) scale(1.025);
-    filter: brightness(1.08) blur(1.5px) drop-shadow(0 22px 42px rgba(29, 78, 168, 0.28));
-  }
-  82% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(calc(var(--parallax-y, 0px) + 2px)) scale(0.995);
-    filter: brightness(1.02) blur(0.2px);
+    transform: translateX(-50%) translateY(calc(var(--parallax-y, 0px) - 4px)) scale(1.01);
+    filter: blur(0.5px);
   }
   100% {
     opacity: 1;
     transform: translateX(-50%) translateY(var(--parallax-y, 0px)) scale(1);
-    filter: brightness(1) blur(0px);
+    filter: blur(0px);
   }
 }
 
-@keyframes bloomPopLeft {
-  0% {
-    opacity: 0;
-    transform: translateY(calc(var(--parallax-y, 0px) + 55px)) scale(0.82);
-    filter: brightness(1.3) blur(12px);
-  }
-  62% {
-    opacity: 0.96;
-    transform: translateY(calc(var(--parallax-y, 0px) - 6px)) scale(1.025);
-    filter: brightness(1.08) blur(1.5px);
-  }
-  82% {
-    opacity: 1;
-    transform: translateY(calc(var(--parallax-y, 0px) + 2px)) scale(0.995);
-    filter: brightness(1.02) blur(0.2px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(var(--parallax-y, 0px)) scale(1);
-    filter: brightness(1) blur(0px);
-  }
-}
-
-@keyframes bloomPopRight {
-  0% {
-    opacity: 0;
-    transform: translateY(calc(var(--parallax-y, 0px) + 55px)) scale(0.82);
-    filter: brightness(1.3) blur(12px);
-  }
-  62% {
-    opacity: 0.96;
-    transform: translateY(calc(var(--parallax-y, 0px) - 6px)) scale(1.025);
-    filter: brightness(1.08) blur(1.5px);
-  }
-  82% {
-    opacity: 1;
-    transform: translateY(calc(var(--parallax-y, 0px) + 2px)) scale(0.995);
-    filter: brightness(1.02) blur(0.2px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(var(--parallax-y, 0px)) scale(1);
-    filter: brightness(1) blur(0px);
-  }
-}
-
-/* Slender Transparent Placeholder */
+/* Portrait fallback placeholder */
 .hero-placeholder {
   width: 100%;
   height: 100%;
@@ -402,20 +332,13 @@
   font-size: 0.88rem;
   font-weight: 600;
   gap: 6px;
-  pointer-events: auto;
 }
+.hero-placeholder span  { font-size: 0.98rem; font-weight: 700; }
+.hero-placeholder small { color: #6366f1; font-size: 0.76rem; }
 
-.hero-placeholder span {
-  font-size: 0.98rem;
-  font-weight: 700;
-}
-
-.hero-placeholder small {
-  color: #6366f1;
-  font-size: 0.76rem;
-}
-
-/* ================= 2-COLUMN BIO PARAGRAPHS ================= */
+/* ──────────────────────────────────────────
+   2-COLUMN BIO
+────────────────────────────────────────── */
 .hero-bio-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -434,151 +357,205 @@
   letter-spacing: -0.01em;
 }
 
-/* ================= RESPONSIVE ADJUSTMENTS ================= */
+/* ──────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .hero-stage {
-    max-width: 960px;
-  }
-  .hero-center-spacer {
-    width: clamp(130px, 16vw, 200px);
-  }
-  .hero-paper-plane-wrapper {
-    left: calc(50% + 55px);
-    top: 25px;
-  }
-  .photo-card-left {
-    width: 290px;
-    height: 390px;
-    left: calc(50% - 315px);
-    top: 90px;
-  }
-  .photo-card-right {
-    width: 290px;
-    height: 390px;
-    left: calc(50% + 25px);
-    top: 95px;
-  }
-  .cutout-center-wrapper {
-    width: 350px;
-    height: 700px;
-    top: -180px;
-  }
-  .hero-collage-stage {
-    height: 500px;
-  }
-  .hero-bio-grid {
-    gap: 40px;
-  }
+  .hero-stage         { max-width: 960px; }
+  .hero-center-spacer { width: clamp(130px, 16vw, 200px); }
+  .hero-plane-1       { left: calc(50% + 55px); top: 20px; }
+  .hero-plane-2       { left: calc(50% - 180px); top: 40px; }
+  .hero-plane-3       { left: calc(50% + 160px); top: -10px; }
+  .cutout-center-wrapper { width: 350px; height: 700px; top: -180px; }
+  .hero-collage-stage { height: 500px; }
+  .hero-bio-grid { gap: 40px; }
 }
 
 @media (max-width: 768px) {
-  .hero-top-row {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-    padding-top: 0;
+  .hero-section {
+    padding: 16px 0 36px;
   }
 
-  .hero-left-header,
-  .hero-right-header {
-    align-items: center;
-    text-align: center;
+  .wheel-desktop-only { display: none;  }
+  .wheel-mobile-only  { display: block; }
+
+  .hero-top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
     padding-top: 0;
+    gap: 0;
+  }
+
+  .hero-left-header {
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-right-header {
+    align-items: flex-end;
+    text-align: right;
     margin-left: 0;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-greeting {
+    font-size: clamp(0.85rem, 2.8vw, 1.05rem);
+    margin-bottom: 2px;
   }
 
   .hero-greeting-spacer {
-    display: none;
+    font-size: clamp(0.85rem, 2.8vw, 1.05rem);
+    margin-bottom: 2px;
   }
-  
+
+  .hero-first-name,
+  .hero-last-name {
+    font-size: clamp(1.6rem, 5.8vw, 2.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+  }
+
   .hero-center-spacer {
-    display: none;
+    width: clamp(70px, 20vw, 120px);
+    height: 10px;
+    flex-shrink: 0;
   }
-  .hero-paper-plane-wrapper {
-    display: none;
-  }
+
   .hero-subtag {
+    font-size: clamp(0.78rem, 2.4vw, 0.95rem);
     white-space: normal;
-    text-align: center;
+    text-align: right;
     margin-top: 4px;
   }
-  /* Make stage tall enough for big center cutout */
-  .hero-collage-stage {
-    height: 460px;
-    margin-top: 15px;
+
+  .hero-paper-planes-container {
+    display: block;
   }
-  /* Side photos: smaller, pushed to the edges */
-  .photo-card-left {
-    left: calc(50% - 200px);
-    width: 160px;
-    height: 220px;
-    top: 100px;
-  }
-  .photo-card-left .photo-card-inner {
-    border-radius: 14px;
-    transform: rotate(-8deg);
-  }
-  .photo-card-right {
+
+  .hero-plane-1 {
     left: calc(50% + 42px);
-    width: 160px;
-    height: 220px;
-    top: 105px;
+    top: 15px;
+    width: 24px;
+    height: 20px;
   }
-  .photo-card-right .photo-card-inner {
-    border-radius: 14px;
-    transform: rotate(8deg);
+
+  .hero-plane-2 {
+    left: calc(50% - 130px);
+    top: 25px;
+    width: 18px;
+    height: 16px;
   }
-  /* Center cutout: tall, wide, clearly dominant */
+
+  .hero-plane-3 {
+    left: calc(50% + 110px);
+    top: -5px;
+    width: 16px;
+    height: 14px;
+  }
+
+  .hero-collage-stage {
+    height: 380px;
+    margin-top: -10px;
+  }
+
   .cutout-center-wrapper {
-    width: 300px;
-    height: 600px;
-    top: -150px;
+    width: 240px;
+    height: 480px;
+    top: -100px;
   }
+
   .hero-bio-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0;
-    margin-top: 30px;
+    gap: 16px;
+    padding: 0 4px;
+    margin-top: 18px;
+  }
+
+  .hero-bio-col {
+    font-size: clamp(1.05rem, 3.8vw, 1.25rem);
+    line-height: 1.6;
   }
 }
 
 @media (max-width: 480px) {
+  .hero-stage {
+    padding: 0 14px;
+  }
+
   .hero-first-name,
   .hero-last-name {
-    font-size: clamp(2.2rem, 11vw, 3rem);
+    font-size: clamp(1.45rem, 6.2vw, 1.95rem);
   }
-  .hero-greeting {
-    font-size: 1rem;
+
+  .hero-center-spacer {
+    width: clamp(55px, 17vw, 85px);
   }
-  .hero-subtag {
-    font-size: 1rem;
-  }
-  /* Stage tall enough so dominant center shows fully */
+
   .hero-collage-stage {
-    height: 400px;
+    height: 330px;
+    margin-top: -6px;
   }
-  /* Side photos: small & pushed to edges to frame the center */
-  .photo-card-left {
-    left: calc(50% - 175px);
-    width: 130px;
-    height: 185px;
-    top: 90px;
-  }
-  .photo-card-right {
-    left: calc(50% + 47px);
-    width: 130px;
-    height: 185px;
-    top: 95px;
-  }
-  /* Center cutout: clearly the hero — 2x+ wider than side photos */
+
   .cutout-center-wrapper {
-    width: 270px;
-    height: 560px;
-    top: -170px;
+    width: 205px;
+    height: 410px;
+    top: -80px;
   }
+
+  .hero-plane-1 {
+    left: calc(50% + 32px);
+    top: 10px;
+  }
+
+  .hero-plane-2 {
+    left: calc(50% - 95px);
+    top: 20px;
+  }
+
+  .hero-plane-3 {
+    left: calc(50% + 80px);
+    top: -5px;
+  }
+
   .hero-bio-col {
-    font-size: 1.1rem;
-    line-height: 1.65;
+    font-size: clamp(0.95rem, 3.8vw, 1.12rem);
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-first-name,
+  .hero-last-name {
+    font-size: clamp(1.3rem, 5.8vw, 1.6rem);
+  }
+
+  .hero-greeting,
+  .hero-subtag {
+    font-size: 0.75rem;
+  }
+
+  .hero-center-spacer {
+    width: 48px;
+  }
+
+  .hero-collage-stage {
+    height: 290px;
+    margin-top: -4px;
+  }
+
+  .cutout-center-wrapper {
+    width: 175px;
+    height: 350px;
+    top: -60px;
+  }
+
+  .hero-bio-col {
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 }

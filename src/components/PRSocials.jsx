@@ -1,23 +1,21 @@
 import { useState } from 'react';
-import { Sparkles, FileText } from 'lucide-react';
+import { Sparkles, FileText, Quote } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './PRSocials.css';
 
 export default function PRSocials({ data }) {
   const [campaignImgError, setCampaignImgError] = useState(false);
-  const [apologyImgError, setApologyImgError] = useState(false);
-  const [apologyImg2Error, setApologyImg2Error] = useState(false);
+  const [inHerWordsImgError, setInHerWordsImgError] = useState(false);
 
   const {
     mainTitle = "The Strategy I'd Bring",
     caseTitleLines = ["GIVA", "FROM", "BACKLASH", "TO", "BELIEF"],
-    campaignImage = "/assets/pr-strategy/giva-campaign.png",
-    apologyImage = "/assets/pr-strategy/kriti-message.jpeg",
-    apologyImage2 = "/assets/pr-strategy/message-2.jpeg",
-    context = "What happened: Rakhi ad, backlash, ad pulled, apology posted.",
-    approachHeading = "How My Approach Would Look Like",
+    campaignImage = "/assets/pr-strategy/giva-campaign.webp",
+    approachHeading = "The Approach",
     phases = [],
-    inHerWordsHeading = "GIVA Responds through Kriti!",
-    wordsCards = [],
+    inHerWordsHeading = "In Her Words",
+    inHerWordsImage = "/assets/pr-strategy/in-her-words.webp",
+    quote = "",
   } = data || {};
 
   return (
@@ -26,7 +24,7 @@ export default function PRSocials({ data }) {
       <div className="container">
         <div className="pr-socials-container">
           {/* Main Title */}
-          <h2 className="pr-main-title reveal">{mainTitle}</h2>
+          <AnimatedHeading as="h2" className="pr-main-title" text={mainTitle} />
 
           {/* 2x2 Visual Showcase Grid */}
           <div className="pr-showcase-grid">
@@ -46,6 +44,8 @@ export default function PRSocials({ data }) {
                     src={campaignImage}
                     alt="GIVA Rakhi Campaign"
                     className="pr-campaign-img"
+                    loading="lazy"
+                    decoding="async"
                     onError={() => setCampaignImgError(true)}
                   />
                 ) : (
@@ -67,6 +67,8 @@ export default function PRSocials({ data }) {
                       src={apologyImage}
                       alt="GIVA Apology Statement"
                       className="pr-apology-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={() => setApologyImgError(true)}
                     />
                   ) : (
@@ -84,6 +86,8 @@ export default function PRSocials({ data }) {
                       src={apologyImage2}
                       alt="GIVA Response Statement"
                       className="pr-apology-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={() => setApologyImg2Error(true)}
                     />
                   ) : (
@@ -105,7 +109,7 @@ export default function PRSocials({ data }) {
           {/* Approach Section: Heading + 4 Sticky Notes in a Row */}
           {approachHeading && (
             <div className="pr-approach-header reveal">
-              <h3 className="pr-approach-heading">{approachHeading}</h3>
+              <AnimatedHeading as="h3" className="pr-approach-heading" text={approachHeading} />
             </div>
           )}
 
@@ -138,7 +142,7 @@ export default function PRSocials({ data }) {
           {/* In Her Words Section: Heading + 4 Sticky Notes in a Row */}
           {inHerWordsHeading && (
             <div className="pr-approach-header pr-words-header reveal">
-              <h3 className="pr-approach-heading">{inHerWordsHeading}</h3>
+              <AnimatedHeading as="h3" className="pr-approach-heading" text={inHerWordsHeading} />
             </div>
           )}
 

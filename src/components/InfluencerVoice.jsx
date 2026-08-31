@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ShoppingBag, Users } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './InfluencerVoice.css';
 
 export default function InfluencerVoice({ data, onZoomImage }) {
@@ -13,9 +14,9 @@ export default function InfluencerVoice({ data, onZoomImage }) {
     mainTitle = "Finding Right Voice for Your Brand!",
     subtitle = "(SOCIAL MEDIA CONTENT STRATERGY)",
     brandTitleLines = ["TIN", "AND TAH", "THE", "CRAFT", "YOU CARRY"],
-    heroImage = "/assets/influencer-voice/tin-and-tah-hero.png",
+    heroImage = "/assets/influencer-voice/tin-and-tah-hero.webp",
     heroStatement = "",
-    middleImage = "/assets/influencer-voice/model-box-pose.png",
+    middleImage = "/assets/influencer-voice/model-box-pose.webp",
     middleStatement = "",
     creatorCards = [],
   } = data || {};
@@ -27,7 +28,7 @@ export default function InfluencerVoice({ data, onZoomImage }) {
         <div className="voice-container">
           {/* Header Title & Subtitle */}
           <div className="voice-header-area reveal">
-            <h2 className="voice-main-title">{mainTitle}</h2>
+            <AnimatedHeading as="h2" className="voice-main-title" text={mainTitle} />
             <div className="voice-subtitle">{subtitle}</div>
           </div>
 
@@ -39,6 +40,8 @@ export default function InfluencerVoice({ data, onZoomImage }) {
                   src={heroImage}
                   alt="Tin and Tah Artisanal Bag"
                   className="voice-hero-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={() => handleError('hero-bag')}
                 />
               ) : (
@@ -72,6 +75,8 @@ export default function InfluencerVoice({ data, onZoomImage }) {
                   src={middleImage}
                   alt="Model with Artisanal Bag"
                   className="voice-model-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={() => handleError('middle-model')}
                 />
               ) : (
@@ -102,6 +107,8 @@ export default function InfluencerVoice({ data, onZoomImage }) {
                     src={card.image}
                     alt={card.caption}
                     className="creator-card-img"
+                    loading="lazy"
+                    decoding="async"
                     onError={() => handleError(card.id)}
                   />
                 ) : (

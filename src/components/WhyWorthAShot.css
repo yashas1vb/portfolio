@@ -174,8 +174,8 @@
 @media (max-width: 640px) {
   .worth-container {
     max-width: 100%;
-    padding: 0 16px;
-    gap: 24px;
+    padding: 0 12px;
+    gap: 20px;
   }
 
   .worth-title-row {
@@ -186,34 +186,55 @@
   }
 
   .worth-main-title {
-    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
   }
 
   .worth-tv-icon-card {
-    width: 95px;
+    width: clamp(70px, 18vw, 95px);
     height: auto;
     margin-top: 0;
   }
 
   .worth-masonry-grid {
-    column-gap: 14px;
+    column-gap: 12px;
   }
 
   .worth-column {
-    gap: 20px;
+    gap: 16px;
   }
 
   .worth-column-offset {
-    padding-top: 60px;
+    padding-top: 40px;
   }
 
   .worth-caption-overlay {
-    padding: 18px 8px 10px;
+    padding: 14px 6px 8px;
   }
 
   .worth-caption-text {
-    font-size: 0.76rem;
+    font-size: 0.75rem;
     line-height: 1.25;
+  }
+}
+
+@media (max-width: 480px) {
+  .worth-masonry-grid {
+    column-gap: 10px;
+  }
+  .worth-column-offset {
+    padding-top: 25px;
+  }
+  .worth-card {
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 360px) {
+  .worth-container {
+    padding: 0 6px;
+  }
+  .worth-caption-text {
+    font-size: 0.68rem;
   }
 }
 

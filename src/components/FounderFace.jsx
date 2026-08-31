@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize2, Video as VideoIcon } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './FounderFace.css';
 
-function VideoPlayerCard({ videoSrc, title, cardClass, delayClass }) {
+export function VideoPlayerCard({ videoSrc, title, cardClass, delayClass }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
@@ -139,13 +140,7 @@ export default function FounderFace({ data }) {
         <div className="founder-container">
           {/* Top Row: Stacked Title Left | Horizontal Store Visit Video Right */}
           <div className="founder-top-row">
-            <div className="founder-stacked-title reveal-left">
-              {titleLines.map((line, index) => (
-                <div key={index} className="founder-title-line">
-                  {line}
-                </div>
-              ))}
-            </div>
+            <AnimatedHeading lines={titleLines} className="founder-stacked-title" />
 
             <VideoPlayerCard
               videoSrc={topVideo.video}

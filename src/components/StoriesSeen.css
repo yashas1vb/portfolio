@@ -53,6 +53,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  padding-left: clamp(24px, 3.5vw, 48px);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -255,26 +256,40 @@
 
 @media (max-width: 600px) {
   .stories-section {
-    padding: 50px 0 70px;
+    padding: 30px 0 45px;
   }
 
   .stories-paper-stack {
-    max-width: 340px;
-    height: 320px;
+    max-width: 320px;
+    height: 300px;
   }
 
   .paper-layer-1 {
     width: 74%;
+    left: 10%;
   }
 
   .paper-layer-2 {
-    top: 22%;
+    top: 20%;
     width: 78%;
+    left: 0;
   }
 
   .paper-layer-3 {
-    top: 36%;
+    top: 34%;
     width: 82%;
+    left: 10%;
+  }
+}
+
+@media (max-width: 400px) {
+  .stories-paper-stack {
+    max-width: 270px;
+    height: 250px;
+  }
+  .stories-points-list {
+    padding-left: 12px;
+    gap: 14px;
   }
 }
 

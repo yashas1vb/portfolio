@@ -237,3 +237,23 @@
     gap: 24px;
   }
 }
+
+@media (max-width: 540px) {
+  .voice-container {
+    padding: 0 12px;
+    gap: 24px;
+  }
+  .voice-hero-card,
+  .voice-middle-card {
+    max-height: 380px;
+  }
+  .voice-statement {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .voice-statement {
+    font-size: 0.95rem;
+  }
+}

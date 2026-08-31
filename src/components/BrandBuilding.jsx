@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Utensils } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './BrandBuilding.css';
 
 export default function BrandBuilding({ data }) {
@@ -19,12 +20,12 @@ export default function BrandBuilding({ data }) {
     subtitle = "(Case Study)",
     ventureTitle = ["POPO", "VENTURES", "GOURMET IDEA", "TO IDENTITY"],
     logos = [
-      { id: "pizza-bakery", name: "The Pizza Bakery", image: "/assets/brand-building/Pizza Bakery Logo.png" },
-      { id: "paris-panini", name: "Paris Panini", image: "/assets/brand-building/Paris Panii Logo.png" },
-      { id: "smash-guys", name: "Smash Guys", image: "/assets/brand-building/Smash Guys Logo.png" },
+      { id: "pizza-bakery", name: "The Pizza Bakery", image: "/assets/brand-building/Pizza Bakery Logo.webp" },
+      { id: "paris-panini", name: "Paris Panini", image: "/assets/brand-building/Paris Panii Logo.webp" },
+      { id: "smash-guys", name: "Smash Guys", image: "/assets/brand-building/Smash Guys Logo.webp" },
     ],
     summary = "All three serve gourmet food, but each found its own niche, gave it a personality, and let that identity do the work!",
-    items = [],
+    foodCards = [],
   } = data || {};
 
   return (
@@ -33,7 +34,7 @@ export default function BrandBuilding({ data }) {
       <div className="container">
         {/* Main Section Header */}
         <div className="brand-header-area reveal">
-          <h2 className="brand-main-title">{title}</h2>
+          <AnimatedHeading as="h2" className="brand-main-title" text={title} />
           <div className="brand-subtitle-wrap">
             <span className="brand-subtitle-tag">{subtitle}</span>
           </div>
@@ -57,6 +58,8 @@ export default function BrandBuilding({ data }) {
                     src={logo.image}
                     alt={logo.name}
                     className="brand-logo-img"
+                    loading="lazy"
+                    decoding="async"
                     onError={() => handleLogoError(logo.id)}
                   />
                 ) : (
@@ -95,6 +98,8 @@ export default function BrandBuilding({ data }) {
                         src={item.image}
                         alt="Gourmet Food"
                         className="brand-food-photo pizza-cutout"
+                        loading="lazy"
+                        decoding="async"
                         onError={() => handleFoodError(item.id)}
                       />
                     ) : (
@@ -122,6 +127,8 @@ export default function BrandBuilding({ data }) {
                         src={item.image}
                         alt="Gourmet Food"
                         className={`brand-food-photo ${item.id}-cutout`}
+                        loading="lazy"
+                        decoding="async"
                         onError={() => handleFoodError(item.id)}
                       />
                     ) : (

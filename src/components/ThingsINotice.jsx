@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './ThingsINotice.css';
 
 export default function ThingsINotice({ data }) {
@@ -19,12 +20,22 @@ export default function ThingsINotice({ data }) {
   return (
     <section id="my-take" className="notice-section">
       <div className="container">
-        {/* Title */}
-        <h2 className="notice-title reveal">{title}</h2>
+        {/* Main Title */}
+        <AnimatedHeading as="h2" className="notice-title" text={title} />
+
+        {/* Mobile Top Annotations Row (Above Images) */}
+        <div className="notice-labels-mobile-top">
+          <div className="notice-handwritten-label notice-mobile-label">
+            {billboardItem.label || "interactive billboard/campaigns"}
+          </div>
+          <div className="notice-handwritten-label notice-mobile-label">
+            {trendsItem.label || "whimsymaxxingg/trends"}
+          </div>
+        </div>
 
         {/* 3-Column Layout: Left Annotations | Central Moodboard | Right Annotations */}
         <div className="notice-board-wrapper">
-          {/* Left Handwritten Annotations */}
+          {/* Left Handwritten Annotations (Desktop) */}
           <div className="notice-labels-left">
             <div className="notice-handwritten-label reveal-left delay-1">
               {billboardItem.label || "interactive billboard/campaigns"}
@@ -43,13 +54,15 @@ export default function ThingsINotice({ data }) {
                   src={billboardItem.image}
                   alt={billboardItem.label}
                   className="notice-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={() => handleError('billboard')}
                 />
               ) : (
                 <div className="notice-placeholder">
                   <ImageIcon size={24} />
                   <span>Billboard / Ad</span>
-                  <small>/assets/things-i-notice/billboard.png</small>
+                  <small>/assets/things-i-notice/billboard.webp</small>
                 </div>
               )}
             </div>
@@ -61,13 +74,15 @@ export default function ThingsINotice({ data }) {
                   src={trendsItem.image}
                   alt={trendsItem.label}
                   className="notice-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={() => handleError('trends')}
                 />
               ) : (
                 <div className="notice-placeholder">
                   <ImageIcon size={24} />
                   <span>Trends / Snacks</span>
-                  <small>/assets/things-i-notice/trends.png</small>
+                  <small>/assets/things-i-notice/trends.webp</small>
                 </div>
               )}
             </div>
@@ -79,13 +94,15 @@ export default function ThingsINotice({ data }) {
                   src={creatorsItem.image}
                   alt={creatorsItem.label}
                   className="notice-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={() => handleError('creators')}
                 />
               ) : (
                 <div className="notice-placeholder">
                   <ImageIcon size={24} />
                   <span>Creator Poster</span>
-                  <small>/assets/things-i-notice/creators.png</small>
+                  <small>/assets/things-i-notice/creators.webp</small>
                 </div>
               )}
             </div>
@@ -97,19 +114,21 @@ export default function ThingsINotice({ data }) {
                   src={memesItem.image}
                   alt={memesItem.label}
                   className="notice-img"
+                  loading="lazy"
+                  decoding="async"
                   onError={() => handleError('memes')}
                 />
               ) : (
                 <div className="notice-placeholder">
                   <ImageIcon size={24} />
                   <span>Memes / Roman Statue</span>
-                  <small>/assets/things-i-notice/memes.png</small>
+                  <small>/assets/things-i-notice/memes.webp</small>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Right Handwritten Annotations */}
+          {/* Right Handwritten Annotations (Desktop) */}
           <div className="notice-labels-right">
             <div className="notice-handwritten-label reveal-right delay-2">
               {trendsItem.label || "whimsymaxxingg/trends"}
@@ -117,6 +136,16 @@ export default function ThingsINotice({ data }) {
             <div className="notice-handwritten-label reveal-right delay-4">
               {memesItem.label || "memes/conversations"}
             </div>
+          </div>
+        </div>
+
+        {/* Mobile Bottom Annotations Row (Below Images) */}
+        <div className="notice-labels-mobile-bottom">
+          <div className="notice-handwritten-label notice-mobile-label">
+            {creatorsItem.label || "creators/comeback"}
+          </div>
+          <div className="notice-handwritten-label notice-mobile-label">
+            {memesItem.label || "memes/conversations"}
           </div>
         </div>
       </div>

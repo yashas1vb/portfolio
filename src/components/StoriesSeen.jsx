@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Newspaper } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './StoriesSeen.css';
 
 export default function StoriesSeen({ data }) {
@@ -14,9 +15,9 @@ export default function StoriesSeen({ data }) {
     role = "Apollo Spectra · PR Internship",
     points = [],
     papers = [
-      { id: "paper-1", src: "/assets/stories/1-paper.png", alt: "Amulyavani Press Coverage", number: 1 },
-      { id: "paper-2", src: "/assets/stories/2-paper.png", alt: "IndiaTV Press Coverage", number: 2 },
-      { id: "paper-3", src: "/assets/stories/3-paper.png", alt: "Hindustan Times Press Coverage", number: 3 },
+      { id: "paper-1", src: "/assets/stories/1-paper.webp", alt: "Amulyavani Press Coverage", number: 1 },
+      { id: "paper-2", src: "/assets/stories/2-paper.webp", alt: "IndiaTV Press Coverage", number: 2 },
+      { id: "paper-3", src: "/assets/stories/3-paper.webp", alt: "Hindustan Times Press Coverage", number: 3 },
     ],
   } = data || {};
 
@@ -27,19 +28,13 @@ export default function StoriesSeen({ data }) {
         <div className="stories-grid">
           {/* Left Column: Stacked Title + Role + Bullet Points */}
           <div className="stories-content-left reveal-left">
-            <div className="stories-stacked-title">
-              {titleLines.map((line, index) => (
-                <div key={index} className="stories-title-line">
-                  {line}
-                </div>
-              ))}
-            </div>
+            <AnimatedHeading lines={titleLines} className="stories-stacked-title" />
 
             <div className="stories-role-tag">{role}</div>
 
             <ul className="stories-points-list">
               {points.map((point, index) => (
-                <li key={index} className={`stories-point-item reveal delay-${index + 1}`}>
+                <li key={index} className={`stories-point-item reveal-left delay-point-${index + 1}`}>
                   {point}
                 </li>
               ))}
@@ -64,8 +59,9 @@ export default function StoriesSeen({ data }) {
                         src={paper.src}
                         alt={paper.alt || `Press coverage paper ${paperNum}`}
                         className="stories-paper-img"
-                        onError={() => handleError(paper.id)}
                         loading="lazy"
+                        decoding="async"
+                        onError={() => handleError(paper.id)}
                       />
                     ) : (
                       <div className="stories-paper-placeholder">

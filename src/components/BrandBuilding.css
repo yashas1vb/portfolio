@@ -384,12 +384,12 @@
 
 @media (max-width: 540px) {
   .brand-logos-row {
-    gap: 14px;
+    gap: 12px;
   }
 
   .brand-logo-card {
-    width: 108px;
-    height: 108px;
+    width: clamp(90px, 26vw, 115px);
+    height: clamp(90px, 26vw, 115px);
   }
 
   .brand-summary-text {
@@ -398,6 +398,21 @@
 
   .brand-food-desc-text {
     font-size: 1.15rem;
+  }
+
+  .panini-cutout,
+  .burger-cutout,
+  .pizza-cutout {
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-summary-text {
+    font-size: 0.95rem;
+  }
+  .brand-food-desc-text {
+    font-size: 1.0rem;
   }
 }
 

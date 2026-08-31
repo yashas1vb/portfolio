@@ -6,16 +6,20 @@ import ThingsINotice from './components/ThingsINotice';
 import WhatIBring from './components/WhatIBring';
 import StoriesSeen from './components/StoriesSeen';
 import CreatorHunting from './components/CreatorHunting';
-import BrandBuilding from './components/BrandBuilding';
+import PopoVenturesTitle from './components/PopoVenturesTitle';
+import PopoVenturesFood from './components/PopoVenturesFood';
 import BrandPersonality from './components/BrandPersonality';
 import BrandEvolution from './components/BrandEvolution';
-import FounderFace from './components/FounderFace';
-import PRSocials from './components/PRSocials';
+import FounderFaceTop from './components/FounderFaceTop';
+import FounderFaceReels from './components/FounderFaceReels';
+import PRSocialsTitle from './components/PRSocialsTitle';
+import PRSocialsDetails from './components/PRSocialsDetails';
 import InfluencerVoice from './components/InfluencerVoice';
 import CreativeWorks from './components/CreativeWorks';
 import SideQuests from './components/SideQuests';
 import WhyWorthAShot from './components/WhyWorthAShot';
 import ContactSection from './components/ContactSection';
+import StickyPanelTransition from './components/StickyPanelTransition';
 import { portfolioData } from './data/portfolioData';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
@@ -44,29 +48,36 @@ export default function App() {
         {/* Section 1: Hero */}
         <Hero personal={portfolioData.personal} />
 
-        {/* Section 2: Things I Notice! (Horizontal Slide from Right) */}
-        <div className="scroll-slide-wrapper scroll-slide-right" data-scroll-type="horizontal-right">
-          <ThingsINotice data={portfolioData.thingsINotice} />
-        </div>
-
-        {/* Section 3: What I Bring? (Vertical Slide from Bottom) */}
-        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
-          <WhatIBring data={portfolioData.whatIBring} />
-        </div>
+        {/* Section 2 & 3: Sticky Transition (Things I Notice -> What I Bring) */}
+        <StickyPanelTransition
+          direction="left"
+          panelBehind={
+            <ThingsINotice data={portfolioData.thingsINotice} />
+          }
+          panelSliding={
+            <WhatIBring data={portfolioData.whatIBring} />
+          }
+        />
 
         {/* Section 4: Stories That Got Me Seen! (Horizontal Slide from Left) */}
         <div className="scroll-slide-wrapper scroll-slide-left" data-scroll-type="horizontal-left">
           <StoriesSeen data={portfolioData.storiesThatGotMeSeen} />
         </div>
 
-        {/* Section 5: Creator Hunting (Vertical Slide from Bottom) */}
-        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
-          <CreatorHunting data={portfolioData.creatorHunting} />
-        </div>
+        {/* Section 5 & 6a: Sticky Transition (Creator Hunting -> Popo Ventures Title) */}
+        <StickyPanelTransition
+          direction="right"
+          panelBehind={
+            <CreatorHunting data={portfolioData.creatorHunting} />
+          }
+          panelSliding={
+            <PopoVenturesTitle data={portfolioData.brandBuilding} />
+          }
+        />
 
-        {/* Section 6: Brand Building / Popo Ventures (Horizontal Slide from Right) */}
-        <div className="scroll-slide-wrapper scroll-slide-right" data-scroll-type="horizontal-right">
-          <BrandBuilding data={portfolioData.brandBuilding} />
+        {/* Section 6b: Popo Ventures Food */}
+        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+          <PopoVenturesFood data={portfolioData.brandBuilding} />
         </div>
 
         {/* Section 7: Brand Personality (Vertical Slide from Bottom) */}
@@ -79,14 +90,25 @@ export default function App() {
           <BrandEvolution data={portfolioData.brandEvolution} />
         </div>
 
-        {/* Section 9: Founder Face (Vertical Slide from Bottom) */}
+        {/* Section 9a: Founder Face Top (Title + Top Video) */}
         <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
-          <FounderFace data={portfolioData.founderFace} />
+          <FounderFaceTop data={portfolioData.founderFace} />
         </div>
 
-        {/* Section 10: The Strategy I'd Bring / PR Socials (Horizontal Slide from Right) */}
-        <div className="scroll-slide-wrapper scroll-slide-right" data-scroll-type="horizontal-right">
-          <PRSocials data={portfolioData.prSocials} />
+        {/* Section 9b & 10a: Sticky Transition (Founder Face Reels -> The Strategy I'd Bring Title) */}
+        <StickyPanelTransition
+          direction="right"
+          panelBehind={
+            <FounderFaceReels data={portfolioData.founderFace} />
+          }
+          panelSliding={
+            <PRSocialsTitle data={portfolioData.prSocials} />
+          }
+        />
+
+        {/* Section 10b: The Strategy I'd Bring Details (Vertical Slide from Bottom) */}
+        <div className="scroll-slide-wrapper scroll-slide-up" data-scroll-type="vertical">
+          <PRSocialsDetails data={portfolioData.prSocials} />
         </div>
 
         {/* Section 11: Influencer Voice / Tin and Tah (Vertical Slide from Bottom) */}

@@ -6,6 +6,14 @@
   width: 100%;
 }
 
+.founder-top-section {
+  padding: 45px 0 60px;
+}
+
+.founder-reels-section {
+  padding: 12px 0 24px;
+}
+
 .founder-container {
   width: 100%;
   max-width: 1320px;
@@ -14,6 +22,10 @@
   flex-direction: column;
   gap: 28px;
   padding: 0 24px;
+}
+
+.founder-reels-container {
+  gap: 20px;
 }
 
 /* ================= TOP ROW: TITLE LEFT | HORIZONTAL VIDEO RIGHT ================= */
@@ -156,36 +168,67 @@
 }
 
 /* ================= MIDDLE ROW: 2 VERTICAL REEL CARDS ================= */
-.founder-reels-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(280px, 480px));
+.founder-reels-section {
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 28px;
+  align-items: center;
+}
+
+.founder-reels-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.2vh, 24px);
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(12px, 2vh, 28px) 24px;
+}
+
+.founder-reels-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(20px, 3.5vw, 48px);
   width: 100%;
 }
 
 .video-reel-card {
-  width: 100%;
+  height: clamp(380px, 66vh, 600px);
+  width: auto;
   aspect-ratio: 9 / 14;
+  max-width: 46vw;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
+  background: #0f172a;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ================= BOTTOM EDITORIAL TEXT ================= */
 .founder-bottom-copy {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: clamp(6px, 1vh, 12px);
   text-align: center;
-  max-width: 96%;
+  max-width: 98%;
   width: max-content;
-  margin: 15px auto 0;
+  margin: clamp(10px, 1.8vh, 22px) auto 0;
 }
 
 .founder-copy-p {
   font-family: var(--font-primary);
-  font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+  font-size: clamp(1.08rem, 1.45vw, 1.5rem);
   font-weight: 700;
   color: var(--text-blue);
-  line-height: 1.4;
+  line-height: 1.36;
   letter-spacing: -0.01em;
   margin: 0 auto;
   max-width: 100%;
@@ -222,9 +265,13 @@
 }
 
 @media (max-width: 860px) {
+  .founder-top-section {
+    padding: 28px 0 36px;
+  }
+
   .founder-top-row {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
   }
 
   .founder-stacked-title {
@@ -232,29 +279,98 @@
     text-align: center;
   }
 
+  .founder-reels-section {
+    padding: 12px 0 20px;
+  }
+
+  .founder-reels-container {
+    padding: 8px 14px;
+    gap: 12px;
+  }
+
   .founder-reels-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
   }
 
   .video-reel-card {
-    aspect-ratio: 9 / 13;
-    max-width: 480px;
-    margin: 0 auto;
+    height: clamp(200px, 32vh, 260px);
+    width: auto;
+    aspect-ratio: 9 / 15;
+    max-width: 47%;
+    border-radius: 10px;
+    margin: 0;
   }
 
   .founder-control-bar {
     opacity: 1;
+    padding: 6px 8px;
+  }
+
+  .video-ctrl-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .video-center-btn {
+    width: 44px;
+    height: 44px;
   }
 
   .founder-copy-p {
     white-space: normal;
     width: 100%;
+    font-size: clamp(0.88rem, 3.2vw, 1.05rem);
+    line-height: 1.42;
   }
 
   .founder-bottom-copy {
     width: 100%;
     max-width: 100%;
-    padding: 0 16px;
+    padding: 0 10px;
+    margin-top: 8px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 540px) {
+  .founder-container {
+    padding: 0 10px;
+  }
+
+  .founder-reels-container {
+    padding: 6px 10px;
+    gap: 10px;
+  }
+
+  .founder-reels-grid {
+    gap: 8px;
+  }
+
+  .video-reel-card {
+    height: clamp(170px, 28vh, 220px);
+    max-width: 47%;
+    border-radius: 8px;
+  }
+
+  .founder-copy-p {
+    font-size: clamp(0.82rem, 3vw, 0.96rem);
+    line-height: 1.38;
+  }
+}
+
+@media (max-width: 360px) {
+  .video-reel-card {
+    height: 155px;
+  }
+
+  .founder-copy-p {
+    font-size: 0.78rem;
   }
 }

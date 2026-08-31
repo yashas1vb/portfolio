@@ -7,9 +7,9 @@ export const portfolioData = {
     
     // Image slots for Canva hero photos
     images: {
-      leftPhoto: "/assets/hero/hero-left.webp",      // Left tilted photo (red shirt)
-      centerPhoto: "/assets/hero/hero-center.png",   // Center cutout (standing pose with sunglasses)
-      rightPhoto: "/assets/hero/hero-right.jpeg",    // Right tilted photo (black top)
+      leftPhoto: "/assets/hero/hero-left-rotated.webp",      // Left tilted photo (red shirt)
+      centerPhoto: "/assets/hero/hero-center.webp",   // Center cutout (standing pose with sunglasses)
+      rightPhoto: "/assets/hero/hero-right-rotated.webp",    // Right tilted photo (black top)
     },
 
     // Bottom 2-column editorial copy
@@ -31,22 +31,22 @@ export const portfolioData = {
       {
         id: "billboard",
         label: "interactive billboard/campaigns",
-        image: "/assets/things-i-notice/billboard.png",
+        image: "/assets/things-i-notice/billboard.webp",
       },
       {
         id: "trends",
         label: "whimsymaxxingg/trends",
-        image: "/assets/things-i-notice/trends.png",
+        image: "/assets/things-i-notice/trends.webp",
       },
       {
         id: "creators",
         label: "creators/comeback",
-        image: "/assets/things-i-notice/creators.png",
+        image: "/assets/things-i-notice/creators.webp",
       },
       {
         id: "memes",
         label: "memes/conversations",
-        image: "/assets/things-i-notice/memes.png",
+        image: "/assets/things-i-notice/memes.webp",
       },
     ],
   },
@@ -58,25 +58,25 @@ export const portfolioData = {
       {
         id: "pr",
         label: "PR & Communication",
-        image: "/assets/what-i-bring/pr-communication.png",
+        image: "/assets/what-i-bring/pr-communication.webp",
         labelPosition: "top",
       },
       {
         id: "influencer",
         label: "Influencer Marketing",
-        image: "/assets/what-i-bring/influencer-marketing.png",
+        image: "/assets/what-i-bring/influencer-marketing.webp",
         labelPosition: "bottom",
       },
       {
         id: "creative",
         label: "Creative & Campaign Thinking",
-        image: "/assets/what-i-bring/creative-thinking.png",
+        image: "/assets/what-i-bring/creative-thinking.webp",
         labelPosition: "top",
       },
       {
         id: "digital",
         label: "AI & Digital Creation",
-        image: "/assets/what-i-bring/ai-digital-creation.png",
+        image: "/assets/what-i-bring/ai-digital-creation.webp",
         labelPosition: "bottom",
       },
     ],
@@ -95,19 +95,19 @@ export const portfolioData = {
     papers: [
       {
         id: "paper-1",
-        src: "/assets/stories/1-paper.png",
+        src: "/assets/stories/1-paper.webp",
         alt: "Press Article 1 - Amulyavani Obstructive Sleep Apnea Coverage",
         number: 1,
       },
       {
         id: "paper-2",
-        src: "/assets/stories/3-paper.png",
+        src: "/assets/stories/3-paper.webp",
         alt: "Press Article 2 - IndiaTV Pain Management Options Coverage",
         number: 2,
       },
       {
         id: "paper-3",
-        src: "/assets/stories/2-paper.png",
+        src: "/assets/stories/2-paper.webp",
         alt: "Press Article 3 - Hindustan Times Gut Microbiota & Kidney Health",
         number: 3,
       },
@@ -125,12 +125,12 @@ export const portfolioData = {
       "Moved it forward → collaborations",
     ],
     cards: [
-      { id: "ss-1", src: "/assets/creator-hunting/1-ss.png", alt: "Creator Profile @kadynjulia", number: 1 },
-      { id: "ss-2", src: "/assets/creator-hunting/2-ss.png", alt: "Creator Profile @madidecostee", number: 2 },
-      { id: "ss-3", src: "/assets/creator-hunting/3-ss.png", alt: "Creator Profile @hargun_kaurrrrr", number: 3 },
-      { id: "ss-4", src: "/assets/creator-hunting/4-ss.png", alt: "Creator Profile @aleshaahossain", number: 4 },
-      { id: "ss-5", src: "/assets/creator-hunting/5-ss.PNG", alt: "Outreach DM Collaboration Reply Khushi", number: 5 },
-      { id: "ss-6", src: "/assets/creator-hunting/6-ss.PNG", alt: "Outreach DM Collaboration Reply Madi", number: 6 },
+      { id: "ss-1", src: "/assets/creator-hunting/1-ss.webp", alt: "Creator Profile @kadynjulia", number: 1 },
+      { id: "ss-2", src: "/assets/creator-hunting/2-ss.webp", alt: "Creator Profile @madidecostee", number: 2 },
+      { id: "ss-3", src: "/assets/creator-hunting/3-ss.webp", alt: "Creator Profile @hargun_kaurrrrr", number: 3 },
+      { id: "ss-4", src: "/assets/creator-hunting/4-ss.webp", alt: "Creator Profile @aleshaahossain", number: 4 },
+      { id: "ss-5", src: "/assets/creator-hunting/5-ss.webp", alt: "Outreach DM Collaboration Reply Khushi", number: 5 },
+      { id: "ss-6", src: "/assets/creator-hunting/6-ss.webp", alt: "Outreach DM Collaboration Reply Madi", number: 6 },
     ],
   },
 
@@ -143,17 +143,17 @@ export const portfolioData = {
       {
         id: "pizza-bakery",
         name: "The Pizza Bakery",
-        image: "/assets/brand-building/Pizza Bakery Logo.png",
+        image: "/assets/brand-building/Pizza Bakery Logo.webp",
       },
       {
         id: "paris-panini",
         name: "Paris Panini",
-        image: "/assets/brand-building/Paris Panii Logo.png",
+        image: "/assets/brand-building/Paris Panii Logo.webp",
       },
       {
         id: "smash-guys",
         name: "Smash Guys",
-        image: "/assets/brand-building/Smash Guys Logo.png",
+        image: "/assets/brand-building/Smash Guys Logo.webp",
       },
     ],
     summary: "All three serve gourmet food, but each found its own niche, gave it a personality, and let that identity do the work!",
@@ -161,19 +161,19 @@ export const portfolioData = {
       {
         id: "panini",
         description: "French gourmet street food with a focus on hygienic, quality food.",
-        image: "/assets/brand-building/Paris Panini Sandwich.png",
+        image: "/assets/brand-building/Paris Panini Sandwich.webp",
         imagePosition: "right",
       },
       {
         id: "pizza",
         description: "Gourmet, Neapolitan-style sourdough pizza in a market led by large chains.",
-        image: "/assets/brand-building/PB Pizza.png",
+        image: "/assets/brand-building/PB Pizza.webp",
         imagePosition: "left",
       },
       {
         id: "burger",
         description: "Found a gap for an authentic American-style smash-burger experience in India.",
-        image: "/assets/brand-building/Smash Guys Burger.png",
+        image: "/assets/brand-building/Smash Guys Burger.webp",
         imagePosition: "right",
       },
     ],
@@ -187,19 +187,19 @@ export const portfolioData = {
         id: "pizza-bakery",
         name: "Pizza Bakery",
         text: "Pizza Bakery: Rustic, playful, communal where artisanal pizza people gather around.",
-        image: "/assets/evolution/Pizza Bakery.png",
+        image: "/assets/evolution/Pizza Bakery.webp",
       },
       {
         id: "paris-panini",
         name: "Paris Panini",
         text: "Paris Panini: Parisian, youthful, art-forward gourmet made to feel accessible, not fancy.",
-        image: "/assets/evolution/Paris Panini.png",
+        image: "/assets/evolution/Paris Panini.webp",
       },
       {
         id: "smash-guys",
         name: "Smash Guys",
         text: "Smash Guys: American diner, loud, indulgent, nostalgic premium burgers with zero pretension.",
-        image: "/assets/evolution/Smash Guys.png",
+        image: "/assets/evolution/Smash Guys.webp",
       },
     ],
   },
@@ -211,17 +211,17 @@ export const portfolioData = {
     items: [
       {
         id: "pizza-bakery",
-        image: "/assets/evolution/PB.png",
+        image: "/assets/evolution/PB.webp",
         text: "Built credibility through product-first intent and expanded across 15+ locations in Bangalore.",
       },
       {
         id: "food-truck",
-        image: "/assets/evolution/Paris Panini Foodtruck.png",
+        image: "/assets/evolution/Paris Panini Foodtruck.webp",
         text: "Began as a food truck, then pivoted due to traffic restrictions into a casual dining chain with 17+ Bangalore locations.",
       },
       {
         id: "smash-guys",
-        image: "/assets/evolution/Smash pop-ups-Photoroom.png",
+        image: "/assets/evolution/Smash pop-ups-Photoroom.webp",
         text: "Scaled from social media pop-ups to 5+ dedicated Bangalore outlets.",
       },
     ],
@@ -258,9 +258,9 @@ export const portfolioData = {
   prSocials: {
     mainTitle: "The Strategy I'd Bring",
     caseTitleLines: ["GIVA", "FROM", "BACKLASH", "TO", "BELIEF"],
-    campaignImage: "/assets/pr-strategy/giva-campaign.png",
-    apologyImage: "/assets/pr-strategy/kriti-message.jpeg",
-    apologyImage2: "/assets/pr-strategy/message-2.jpeg",
+    campaignImage: "/assets/pr-strategy/giva-campaign.webp",
+    apologyImage: "/assets/pr-strategy/kriti-message.webp",
+    apologyImage2: "/assets/pr-strategy/message-2.webp",
     context: "What happened: Rakhi ad, backlash, ad pulled, apology posted.",
     approachHeading: "How My Approach Would Look Like",
     phases: [
@@ -329,29 +329,29 @@ export const portfolioData = {
     mainTitle: "Finding Right Voice for Your Brand!",
     subtitle: "(SOCIAL MEDIA CONTENT STRATERGY)",
     brandTitleLines: ["TIN", "AND TAH", "THE", "CRAFT", "YOU CARRY"],
-    heroImage: "/assets/influencer-voice/tin-and-tah-hero.png",
+    heroImage: "/assets/influencer-voice/tin-and-tah-hero.webp",
     heroStatement: "The craft already has a story. What it needs is more eyes on it, especially outside India.",
-    middleImage: "/assets/influencer-voice/model-box-pose.png",
+    middleImage: "/assets/influencer-voice/model-box-pose.webp",
     middleStatement: "People love bold, detailed pieces! They just don't know the craft or story sitting behind them.",
     creatorCards: [
       {
         id: "diaspora",
-        image: "/assets/influencer-voice/creator-diaspora.png",
+        image: "/assets/influencer-voice/creator-diaspora.webp",
         caption: "Show it to a local artisan, any craft. They don't critique it, they make something inspired by it, in their own medium.",
       },
       {
         id: "reach",
-        image: "/assets/influencer-voice/creator-reach.png",
+        image: "/assets/influencer-voice/creator-reach.webp",
         caption: "Start with diaspora creators abroad, people who already get the culture and already have an audience that isn't Indian.",
       },
       {
         id: "unboxing",
-        image: "/assets/influencer-voice/creator-unboxing.png",
+        image: "/assets/influencer-voice/creator-unboxing.webp",
         caption: "Start with gifting first, go paid once the interest is real.",
       },
       {
         id: "success",
-        image: "/assets/influencer-voice/creator-success.png",
+        image: "/assets/influencer-voice/creator-success.webp",
         caption: "Success is creators wearing it without a second ask, tagging it themselves, and followers asking where it's from.",
       },
     ],
@@ -366,54 +366,54 @@ export const portfolioData = {
         {
           id: "flipkart-deals",
           title: "Bade Bhi Bacche Ban Jaayein",
-          image: "/assets/flipkart/flipkart-deals.jpeg",
+          image: "/assets/flipkart/flipkart-deals.webp",
         },
         {
           id: "flipkart-ivity",
           title: "IVITY - Smart-ivity For Productivity",
-          image: "/assets/flipkart/flipkart-ivity.jpeg",
+          image: "/assets/flipkart/flipkart-ivity.webp",
         },
       ],
     },
     voyante: {
       brand: "Voyante by Voyage",
       subheading: "Speculative AD Campaign with AI",
-      productImage: "/assets/voyante/Voyanta Product.jpg.jpeg",
-      billboardImage: "/assets/voyante/Voyanta Billboard.jpg.jpeg",
+      productImage: "/assets/voyante/voyante-product.webp",
+      billboardImage: "/assets/voyante/voyante-billboard.webp",
       storyboardTitle: "Storyboard",
       storyboardSub: "(TV/YouTube/OTT Commercial)",
       scenes: [
         {
           id: "scene-1",
           title: "Scene 1: The Abandoned Bag",
-          image: "/assets/voyante/Scene-1.jpeg",
+          image: "/assets/voyante/Scene-1.webp",
         },
         {
           id: "scene-2",
           title: "Scene 2: Agents Enters Frame",
-          image: "/assets/voyante/Scene-2.jpeg",
+          image: "/assets/voyante/Scene-2.webp",
         },
         {
           id: "scene-3",
           title: "Scene 3: Touchscreen Activation",
-          image: "/assets/voyante/Scene-3.jpeg",
+          image: "/assets/voyante/Scene-3.webp",
         },
         {
           id: "scene-4",
           title: "Scene 4: The Comic Extraction",
-          image: "/assets/voyante/Scene-4.jpeg",
+          image: "/assets/voyante/Scene-4.webp",
         },
         {
           id: "scene-5",
           title: "Scene 5: Shoppable Freeze-Frame Moment",
-          image: "/assets/voyante/Scene-5.jpeg",
+          image: "/assets/voyante/Scene-5.webp",
         },
       ],
     },
     aiVideo: {
       title: "AI Video 'Not everything is real' starring me.",
       videoUrl: "/assets/ai-video/ai-music-video.mp4",
-      poster: "/assets/ai-video/ai-video-poster.jpg",
+      poster: "/assets/ai-video/ai-video-poster.webp",
     },
   },
 
@@ -424,17 +424,17 @@ export const portfolioData = {
       {
         id: "conclave",
         title: "NDTV Marathi Emerging Business Conclave - Mumbai Chapter",
-        image: "/assets/side-quests/conclave-event.png",
+        image: "/assets/side-quests/conclave-event.webp",
       },
       {
         id: "auction",
         title: "UTT Player Auction Event",
-        image: "/assets/side-quests/auction-event.png",
+        image: "/assets/side-quests/auction-event.webp",
       },
       {
         id: "awards",
         title: "Excellence Awards Ceremony",
-        image: "/assets/side-quests/excellence-awards.png",
+        image: "/assets/side-quests/excellence-awards.webp",
       },
     ],
   },
@@ -443,36 +443,36 @@ export const portfolioData = {
   worthAShot: {
     title: "WHY I'M WORTH A SHOT!",
     subtitle: "You've seen my work; now here's a bit about how I show up too.",
-    tvIcon: "/assets/side-quests/TV-image.png",
+    tvIcon: "/assets/side-quests/TV-image.webp",
     cards: [
       {
         id: "proactive",
         column: "left",
-        image: "/assets/worth-a-shot/worth-proactive.png",
+        image: "/assets/worth-a-shot/worth-proactive.webp",
         caption: "Proactive – I don't wait to be told; I'm already on it",
       },
       {
         id: "detail",
         column: "right",
-        image: "/assets/worth-a-shot/worth-detail.png",
+        image: "/assets/worth-a-shot/worth-detail.webp",
         caption: "Detail-obsessed – All the little things matter to me",
       },
       {
         id: "curiosity",
         column: "left",
-        image: "/assets/worth-a-shot/worth-curiosity.png",
+        image: "/assets/worth-a-shot/worth-curiosity.webp",
         caption: "Curiosity isn't effort, it's my favorite hobby",
       },
       {
         id: "learning",
         column: "right",
-        image: "/assets/worth-a-shot/worth-learning.png",
+        image: "/assets/worth-a-shot/worth-learning.webp",
         caption: "Always learning – I don't know it all, and that's the fun part",
       },
       {
         id: "people",
         column: "left",
-        image: "/assets/worth-a-shot/worth-people.png",
+        image: "/assets/worth-a-shot/worth-people.webp",
         caption: "People person – I love being around people, figuring out what they need",
       },
     ],

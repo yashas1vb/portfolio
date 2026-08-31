@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Sparkles, Truck, User } from 'lucide-react';
+import AnimatedHeading from './AnimatedHeading';
 import './BrandEvolution.css';
 
 export default function BrandEvolution({ data }) {
@@ -26,7 +27,7 @@ export default function BrandEvolution({ data }) {
       <div className="container">
         {/* Main Section Header */}
         <div className="evolution-header-area reveal">
-          <h2 className="evolution-title">{title}</h2>
+          <AnimatedHeading as="h2" className="evolution-title" text={title} />
           {subtitle && <p className="evolution-subtitle">{subtitle}</p>}
         </div>
 
@@ -41,6 +42,8 @@ export default function BrandEvolution({ data }) {
                     src={pizzaItem.image}
                     alt="The Pizza Bakery Sign"
                     className="evolution-cutout-img pb-sign-img"
+                    loading="lazy"
+                    decoding="async"
                     onError={() => handleError('pizza-bakery')}
                   />
                 ) : (
@@ -66,6 +69,8 @@ export default function BrandEvolution({ data }) {
                     src={truckItem.image}
                     alt="Paris Panini Food Truck"
                     className="evolution-cutout-img foodtruck-img"
+                    loading="lazy"
+                    decoding="async"
                     onError={() => handleError('food-truck')}
                   />
                 ) : (
@@ -91,6 +96,8 @@ export default function BrandEvolution({ data }) {
                     src={smashItem.image}
                     alt="Smash Guys Pop-ups"
                     className="evolution-cutout-img smash-chef-img"
+                    loading="lazy"
+                    decoding="async"
                     onError={() => handleError('smash-guys')}
                   />
                 ) : (

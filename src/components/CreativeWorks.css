@@ -362,15 +362,28 @@
 }
 
 @media (max-width: 680px) {
+  .creative-container {
+    padding: 0 12px;
+    gap: 32px;
+  }
   .storyboard-scenes-track {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .storyboard-scenes-track {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+  .flipkart-poster-img {
+    max-height: 480px;
+  }
+}
+
+@media (max-width: 360px) {
+  .creative-container {
+    padding: 0 6px;
   }
 }
