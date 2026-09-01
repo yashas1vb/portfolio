@@ -486,8 +486,8 @@ export const portfolioData = {
   },
 
   navLinks: [
-    { label: "Case Study", href: "#case-study" },
-    { label: "My Take", href: "#my-take" },
+    { label: "Case Study", href: "#owning-the-niche" },
+    { label: "My Take", href: "#strategy-i-bring" },
     { label: "Why Me", href: "#why-me" },
     { label: "Contact", href: "#contact" },
   ],

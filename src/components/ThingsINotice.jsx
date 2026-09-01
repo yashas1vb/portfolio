@@ -18,7 +18,7 @@ export default function ThingsINotice({ data }) {
   const memesItem = items.find((i) => i.id === 'memes') || {};
 
   return (
-    <section id="my-take" className="notice-section">
+    <section id="things-i-notice" className="notice-section">
       <div className="container">
         {/* Main Title */}
         <AnimatedHeading as="h2" className="notice-title" text={title} />

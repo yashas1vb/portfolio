@@ -13,7 +13,7 @@ export default function PRSocialsTitle({ data }) {
   } = data || {};
 
   return (
-    <section id="pr-socials-title" className="pr-socials-section pr-socials-title-section">
+    <section id="strategy-i-bring" className="pr-socials-section pr-socials-title-section">
       <div className="parallax-watermark" aria-hidden="true">PR STRATEGY</div>
       <div className="container">
         <div className="pr-socials-container">

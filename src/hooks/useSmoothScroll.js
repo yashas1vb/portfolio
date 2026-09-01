@@ -41,7 +41,21 @@ export function useSmoothScroll() {
         const element = document.querySelector(href);
         if (element) {
           e.preventDefault();
-          lenis.scrollTo(element, { offset: -20, duration: 1.2 });
+
+          // Check if target is inside a sticky panel transition
+          const slidingParent = element.closest('.spt-panel-sliding');
+          const wrapper = element.closest('.spt-wrapper');
+
+          if (slidingParent && wrapper) {
+            const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
+            const targetY = wrapperTop + (wrapper.offsetHeight - window.innerHeight);
+            lenis.scrollTo(targetY, { duration: 1.2 });
+          } else if (wrapper && element.closest('.spt-panel-behind')) {
+            const wrapperTop = wrapper.getBoundingClientRect().top + window.scrollY;
+            lenis.scrollTo(wrapperTop, { duration: 1.2 });
+          } else {
+            lenis.scrollTo(element, { offset: -20, duration: 1.2 });
+          }
         }
       }
     };

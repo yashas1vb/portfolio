@@ -22,7 +22,7 @@ export default function PopoVenturesTitle({ data }) {
   } = data || {};
 
   return (
-    <section id="brand-building-title" className="brand-section">
+    <section id="owning-the-niche" className="brand-section">
       <div className="parallax-watermark" aria-hidden="true">POPO VENTURES</div>
       <div className="container">
         {/* Main Section Header */}
