@@ -177,7 +177,10 @@
    along the curved arc on small screens without disappearing off-screen.
 ────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .arc-outer { top: 38%; }
+  .arc-outer {
+    top: 38%;
+    --arc-speed: 22s;
+  }
 
   .arc-tile {
     width: 120px;

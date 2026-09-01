@@ -1,44 +1,102 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
 import WheelCarousel from './WheelCarousel';
 import AnimatedHeading from './AnimatedHeading';
 import './Hero.css';
 
 /*
- * Image order for the arc (6 images, 32s ÷ 6 ≈ 5.3s stagger each).
- * Deliberate sequencing — the two similar green-park shots (left-2 / left-3)
- * are kept 3 positions apart so they're never adjacent on the visible arc.
- *
- * Arc positions (left → center → right, all simultaneously):
- *   right-3 → left.webp → right.webp → left-2 → right-2 → left-3
+ * Image order for the background arc carousel:
+ * You can reorder, add, or change any image paths in this array below.
  */
 const WHEEL_IMAGES = [
-  { src: '/assets/hero/hero-right-3.webp', alt: 'Supriya – candid 1'   },
-  { src: '/assets/hero/hero-left.webp',    alt: 'Supriya – sitting'    },
-  { src: '/assets/hero/hero-right.webp',   alt: 'Supriya – back pose'  },
-  { src: '/assets/hero/hero-left-2.webp',  alt: 'Supriya – park 1'     },
-  { src: '/assets/hero/hero-right-2.webp', alt: 'Supriya – close up'   },
-  { src: '/assets/hero/hero-left-3.webp',  alt: 'Supriya – park 2'     },
+  { src: '/assets/hero/hero-left-2.webp', alt: 'Supriya – park 1' },
+  { src: '/assets/hero/hero-right.webp', alt: 'Supriya – studio B&W' },
+  { src: '/assets/hero/hero-right-3.webp', alt: 'Supriya – café' },
+  { src: '/assets/hero/hero-right-2.webp', alt: 'Supriya – portrait' },
+  { src: '/assets/hero/hero-left-3.webp', alt: 'Supriya – park 2' },
+  { src: '/assets/hero/hero-left.webp', alt: 'Supriya – sitting' },
 ];
 
-/* Mobile: 3 lighter images */
-const WHEEL_IMAGES_MOBILE = [
-  { src: '/assets/hero/hero-right-3.webp', alt: 'Supriya – candid 1' },
-  { src: '/assets/hero/hero-left.webp',    alt: 'Supriya – sitting'  },
-  { src: '/assets/hero/hero-left-3.webp',  alt: 'Supriya – park 2'  },
-];
+/* Sequential Typewriter for the two bio paragraphs */
+function TypewriterBio({ leftText = '', rightText = '' }) {
+  const [typedLeft, setTypedLeft] = useState('');
+  const [typedRight, setTypedRight] = useState('');
+  const [isLeftDone, setIsLeftDone] = useState(false);
+  const [isRightDone, setIsRightDone] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTypedLeft(leftText);
+      setTypedRight(rightText);
+      setIsLeftDone(true);
+      setIsRightDone(true);
+      setHasStarted(true);
+      return;
+    }
+
+    const startTimer = setTimeout(() => {
+      setHasStarted(true);
+      let leftIdx = 0;
+      const leftInterval = setInterval(() => {
+        leftIdx++;
+        if (leftIdx <= leftText.length) {
+          setTypedLeft(leftText.slice(0, leftIdx));
+        } else {
+          clearInterval(leftInterval);
+          setIsLeftDone(true);
+
+          setTimeout(() => {
+            let rightIdx = 0;
+            const rightInterval = setInterval(() => {
+              rightIdx++;
+              if (rightIdx <= rightText.length) {
+                setTypedRight(rightText.slice(0, rightIdx));
+              } else {
+                clearInterval(rightInterval);
+                setIsRightDone(true);
+              }
+            }, 14);
+          }, 300);
+        }
+      }, 14);
+    }, 700);
+
+    return () => clearTimeout(startTimer);
+  }, [leftText, rightText]);
+
+  return (
+    <>
+      <div className="hero-bio-col">
+        <p className="hero-bio-p">
+          {hasStarted ? (isLeftDone ? leftText : typedLeft) : ''}
+          {hasStarted && !isLeftDone && <span className="hero-bio-cursor" aria-hidden="true" />}
+        </p>
+      </div>
+      <div className="hero-bio-col">
+        <p className="hero-bio-p">
+          {isLeftDone ? (isRightDone ? rightText : typedRight) : ''}
+          {isLeftDone && !isRightDone && <span className="hero-bio-cursor" aria-hidden="true" />}
+        </p>
+      </div>
+    </>
+  );
+}
 
 export default function Hero({ personal }) {
   const [centerErr, setCenterErr] = useState(false);
 
   const {
-    firstName    = 'Supriya',
-    lastName     = 'Naregal',
-    greeting     = 'Hi, my name is',
-    tagline      = 'M.A Advertising and Public Relations',
-    images       = {},
+    firstName = 'Supriya',
+    lastName = 'Naregal',
+    greeting = 'Hi, my name is',
+    tagline = 'M.A Advertising and Public Relations',
+    images = {},
     introColumns = {},
   } = personal || {};
+
+  const leftText = introColumns.left || '';
+  const rightText = introColumns.right || '';
 
   return (
     <section id="hero" className="hero-section">
@@ -116,19 +174,11 @@ export default function Hero({ personal }) {
             </div>
           </div>
 
-          {/* ── ARC CAROUSEL (6 images continuously circling arc on all viewports) ── */}
-          <div className="wheel-desktop-only">
-            <WheelCarousel
-              images={WHEEL_IMAGES}
-              speed={26}
-            />
-          </div>
-          <div className="wheel-mobile-only">
-            <WheelCarousel
-              images={WHEEL_IMAGES}
-              speed={22}
-            />
-          </div>
+          {/* ── ARC CAROUSEL (6 images continuously circling arc) ── */}
+          <WheelCarousel
+            images={WHEEL_IMAGES}
+            speed={26}
+          />
 
           {/* ── CENTER PORTRAIT — highest z-index, always on top ── */}
           <div
@@ -160,14 +210,9 @@ export default function Hero({ personal }) {
 
         </div>{/* end hero-collage-stage */}
 
-        {/* ── Bottom 2-column bio ── */}
+        {/* ── Bottom bio: sequential typing paragraphs ── */}
         <div className="hero-bio-grid">
-          <div className="hero-bio-col reveal delay-3">
-            <p>{introColumns.left}</p>
-          </div>
-          <div className="hero-bio-col reveal delay-4">
-            <p>{introColumns.right}</p>
-          </div>
+          <TypewriterBio leftText={leftText} rightText={rightText} />
         </div>
 
       </div>{/* end hero-stage */}

@@ -266,15 +266,15 @@ export const portfolioData = {
     phases: [
       {
         id: "phase-1",
-        title: "Phase 1 – Stop",
-        body: "Ad down, apology posted. Standard crisis managed, necessarily fast.",
+        title: "Phase 1 – Stand",
+        body: "No pulling the ad. GIVA backs Kirti immediately, publicly, without hesitation.",
         colorScheme: "dark-yellow",
         rotation: "-1.5deg",
       },
       {
         id: "phase-2",
         title: "Phase 2 – Reflect",
-        body: 'After the dust settles, GIVA doesn\'t just move on quietly. It reopens the conversation on its own terms, through Kirti: "Was this really about the clothing, or a bigger idea of what respect should look like?"',
+        body: 'Instead of defending the ad line by line, GIVA reframes the conversation. Through Kirti: "This was never really about the clothing. It was about who gets to define respect."',
         colorScheme: "dark-orange",
         rotation: "1.8deg",
       },
